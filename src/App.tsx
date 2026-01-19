@@ -1,10 +1,15 @@
 import './App.css';
 
+const Greeting = ({person}) => {
+  return <h1>Hello, {person}!</h1>;
+};
+
 const App = () => {
   return (
     <>
       <h1>My empty app</h1>
-      <p>Hello!</p>
+      <Greeting person="Matti" />
+      <Greeting person="Ile" />
     </>
   );
 };
