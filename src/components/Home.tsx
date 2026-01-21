@@ -44,13 +44,18 @@ const Home = () => {
     },
   ];
 
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState<MediaItem | undefined>(
+    undefined,
+  );
 
   return (
     <>
-      <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />
+      {/* Debug
+       <p>Selected item: {selectedItem?.title}</p> */}
+      {selectedItem && (
+        <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />
+      )}
       <h2>My Media</h2>
-      <p>{selectedItem?.title}</p>
       <table>
         <thead>
           <tr>
@@ -64,7 +69,11 @@ const Home = () => {
         </thead>
         <tbody>
           {mediaArray.map((item) => (
-            <MediaRow key={item.media_id} item={item} setSelectedItem={setSelectedItem} />
+            <MediaRow
+              key={item.media_id}
+              item={item}
+              setSelectedItem={setSelectedItem}
+            />
           ))}
         </tbody>
       </table>
