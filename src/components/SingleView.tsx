@@ -6,11 +6,7 @@ const SingleView = (props: {
 }) => {
   const {item, setSelectedItem} = props;
   return (
-    // JSX for displaying a mediafile here
-    // - use e.g. a <dialog> element for creating a modal
-    // - use item prop to render the media item details
-    // - use img tag for displaying images
-    // - use video tag for displaying videos
+
     <dialog open>
       {item && (
         <>
@@ -19,8 +15,7 @@ const SingleView = (props: {
             <img src={item.filename} alt={item.description || item.title} />
           )}
           {item.media_type.split('/')[0] === 'video' && (
-            // TODO: test with real video file
-            <video src={item.filename} />
+            <video src={item.filename} controls/>
           )}
           <p>{item.description}</p>
           <p>
