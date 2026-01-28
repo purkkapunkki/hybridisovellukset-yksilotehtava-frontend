@@ -1,12 +1,12 @@
 import type {MediaItemWithOwner} from 'hybrid-types/DBTypes';
-import {Link} from 'react-router';
+// import {Link} from 'react-router';
 //import {useState} from 'react';
 
 const MediaRow = (props: {
   item: MediaItemWithOwner;
   setSelectedItem: (item: MediaItemWithOwner | undefined) => void;
 }) => {
-  const {item} = props;
+  const {item, setSelectedItem} = props;
   //const [dummyLikes, setDummyLikes] = useState(0);
   // Sama:
   //const dummyLikesState = useState(0);
@@ -25,16 +25,16 @@ const MediaRow = (props: {
       <td>{item.filesize}</td>
       <td>{item.media_type}</td>
       <td>
-        <Link to="/single" state={{item}}>
+        {/* <Link to="/single" state={{item}}>
           Show
-        </Link>
-        {/* <button
+        </Link> */}
+        <button
           onClick={() => {
             setSelectedItem(item);
           }}
         >
           View
-        </button> */}
+        </button>
       </td>
       {/*   <td>Likes: {dummyLikes}
         <button onClick={() => {
