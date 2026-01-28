@@ -11,39 +11,38 @@ const useMedia = () => {
 
   useEffect(() => {
     const getMedia = async () => {
-      const media = await fetchData<MediaItem[]>(
-        import.meta.env.VITE_MEDIA_API + '/media',
-      );
-
-      const mediaWithOwners = await Promise.all<MediaItemWithOwner>(
-        media.map(async (item) => {
-          try {
-            const owner = await fetchData<UserWithNoPassword>(
-              `${import.meta.env.VITE_AUTH_API}/user/${item.user_id}`,
-            );
-            const mediaItemWithOwner: MediaItemWithOwner = {
-              ...item,
-              username: owner.username,
-            };
-            return mediaItemWithOwner;
-          } catch (error) {
-            console.error(error);
-            return {
-              ...item,
-              username: 'not found',
-            };
-          }
-        }),
-      );
-      setMediaArray(mediaWithOwners);
-      console.log(mediaWithOwners);
+      try {
+        const media = await fetchData<MediaItem[]>(
+          import.meta.env.VITE_MEDIA_API + '/media',
+        );
+        const mediaWithOwners = await Promise.all<MediaItemWithOwner>(
+          media.map(async (item) => {
+            try {
+              const owner = await fetchData<UserWithNoPassword>(
+                `${import.meta.env.VITE_AUTH_API}/users/${item.user_id}`,
+              );
+              const mediaItemWithOwner: MediaItemWithOwner = {
+                ...item,
+                username: owner.username,
+              };
+              return mediaItemWithOwner;
+            } catch (error) {
+              console.error(error);
+              return {
+                ...item,
+                username: 'not found',
+              };
+            }
+          }),
+        );
+        setMediaArray(mediaWithOwners);
+        console.log(mediaWithOwners);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
-    try {
-      getMedia();
-    } catch (error) {
-      console.error(error);
-    }
+    getMedia();
   }, []);
   return {mediaArray};
 };
