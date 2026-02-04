@@ -16,7 +16,7 @@ const Profile = () => {
       }
     };
     getUserInfo();
-  }, []);
+  }, [getUserByToken]);
 
   return (
     <>
