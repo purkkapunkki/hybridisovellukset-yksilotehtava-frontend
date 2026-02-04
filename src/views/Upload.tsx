@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import useForm from '../hooks/formHooks';
 import {useFile, useMedia} from '../hooks/apiHooks';
 
@@ -7,6 +7,7 @@ const Upload = () => {
   const [file, setFile] = useState<File | null>(null);
   const {postFile} = useFile();
   const {postMedia} = useMedia();
+  const fileRef = useRef<HTMLInputElement | null>(null);
 
   const initValues = {title: '', description: ''};
 
@@ -22,6 +23,8 @@ const Upload = () => {
       console.log('file upload response', uploadResponse);
       const mediaResponse = await postMedia(uploadResponse, inputs, token);
       console.log('postMedia response', mediaResponse);
+      // reset form (or redirect to home view)
+      resetForm();
     } catch (error) {
       console.log((error as Error).message);
     } finally {
@@ -29,7 +32,7 @@ const Upload = () => {
     }
   };
 
-  const {handleInputChange, handleSubmit, inputs} = useForm(
+  const {handleInputChange, handleSubmit, inputs, setInputs} = useForm(
     doUpload,
     initValues,
   );
@@ -38,6 +41,15 @@ const Upload = () => {
     // console.log(event.target.files);
     if (event.target.files) {
       setFile(event.target.files[0]);
+    }
+  };
+
+  const resetForm = () => {
+    setInputs(initValues);
+    setFile(null);
+    console.log(fileRef.current?.value);
+    if (fileRef.current) {
+      fileRef.current.value = '';
     }
   };
 
@@ -52,6 +64,7 @@ const Upload = () => {
             type="text"
             id="title"
             onChange={handleInputChange}
+            value={inputs.title}
           />
         </div>
         <div>
@@ -61,6 +74,7 @@ const Upload = () => {
             rows={5}
             id="description"
             onChange={handleInputChange}
+            value={inputs.description}
           ></textarea>
         </div>
         <div>
@@ -71,6 +85,7 @@ const Upload = () => {
             id="file"
             accept="image/*, video/*"
             onChange={handleFileChange}
+            ref={fileRef}
           />
         </div>
         <img
@@ -89,6 +104,7 @@ const Upload = () => {
           Upload
         </button>
       </form>
+      <button onClick={resetForm}>Reset</button>
       {uploading && <p>Uploading...</p>}
     </>
   );
