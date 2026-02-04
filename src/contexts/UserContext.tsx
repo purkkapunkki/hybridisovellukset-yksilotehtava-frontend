@@ -2,7 +2,7 @@
 import React, {createContext, useState} from 'react';
 import type {UserWithNoPassword} from 'hybrid-types/DBTypes';
 import {useAuthentication, useUser} from '../hooks/apiHooks';
-import {useNavigate} from 'react-router';
+import {useLocation, useNavigate} from 'react-router';
 import type {AuthContextType, Credentials} from '../types/LocalTypes';
 import type {LoginResponse} from 'hybrid-types/MessageTypes';
 
@@ -13,6 +13,7 @@ const UserProvider = ({children}: {children: React.ReactNode}) => {
   const {postLogin} = useAuthentication();
   const {getUserByToken} = useUser();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // login, logout and autologin functions are here instead of components
   const handleLogin = async (credentials: Credentials) => {
@@ -44,7 +45,7 @@ const UserProvider = ({children}: {children: React.ReactNode}) => {
       if (token) {
         const response = await getUserByToken(token);
         setUser(response.user);
-        navigate('/');
+        navigate(location.pathname || '/');
       }
     } catch (e) {
       console.log((e as Error).message);
