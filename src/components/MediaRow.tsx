@@ -14,35 +14,49 @@ const MediaRow = (props: {
   //const setDummyLikes = dummyLikesState[1];
 
   return (
-    <tr>
-      <td>
-        <img src={item.thumbnail} alt={item.title} />
-      </td>
-      <td>{item.title}</td>
-      <td>{item.description}</td>
-      <td>{item.username}</td>
-      <td>{new Date(item.created_at).toLocaleString('fi-FI')}</td>
-      <td>{item.filesize}</td>
-      <td>{item.media_type}</td>
-      <td>
+    <article className="w-full rounded-md bg-stone-600">
+      <img
+        className="h-72 w-full rounded-t-md object-cover"
+        src={item.thumbnail}
+        alt={item.title}
+      />
+      <div className="p-4">
+        <h3 className="text-center text-2xl">{item.title}</h3>
+        <p className="max-w-full overflow-clip font-bold text-nowrap text-ellipsis text-stone-300">
+          {item.description}
+        </p>
+        <div className="my-2 rounded-md border-1 border-stone-400 p-2">
+          <p>
+            Created at: <br />{' '}
+            {new Date(item.created_at).toLocaleString('fi-FI')}
+          </p>
+          <p>Filesize: {(item.filesize / 1024 / 1024).toFixed(2)} MB</p>
+          <p>Mime-type: {item.media_type}</p>
+          <p>Owner: {item.username}</p>
+        </div>
+        <p>
+          <button
+            className="block w-full bg-stone-500 p-2 text-center transition-all duration-500 ease-in-out hover:bg-stone-700"
+            onClick={() => {
+              setSelectedItem(item);
+            }}
+          >
+            View
+          </button>
+        </p>
+      </div>
+      <>
         {/* <Link to="/single" state={{item}}>
           Show
         </Link> */}
-        <button
-          onClick={() => {
-            setSelectedItem(item);
-          }}
-        >
-          View
-        </button>
-      </td>
-      {/*   <td>Likes: {dummyLikes}
+        {/*   <td>Likes: {dummyLikes}
         <button onClick={() => {
           console.log('add like to', item.title);
           setDummyLikes(dummyLikes + 1);
         }} >Add like</button>
       </td> */}
-    </tr>
+      </>
+    </article>
   );
 };
 

@@ -23,11 +23,17 @@ const RegisterForm = () => {
 
   return (
     <>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="loginusername">Username</label>
+      <h2 className="text-center text-2xl font-semibold">Register</h2>
+      <form
+        onSubmit={handleSubmit}
+        className="mx-auto mt-4 flex w-full max-w-md flex-col gap-4 rounded-md bg-stone-600 p-6 text-stone-50 shadow"
+      >
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-semibold" htmlFor="loginusername">
+            Username
+          </label>
           <input
+            className="rounded-md border border-stone-400 bg-stone-700/60 px-3 py-2 text-stone-50 transition outline-none focus:border-stone-200 focus:ring-2 focus:ring-stone-300/40"
             name="username"
             type="text"
             id="loginusername"
@@ -35,9 +41,12 @@ const RegisterForm = () => {
             autoComplete="username"
           />
         </div>
-        <div>
-          <label htmlFor="email">Email</label>
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-semibold" htmlFor="email">
+            Email
+          </label>
           <input
+            className="rounded-md border border-stone-400 bg-stone-700/60 px-3 py-2 text-stone-50 transition outline-none focus:border-stone-200 focus:ring-2 focus:ring-stone-300/40"
             name="email"
             type="text"
             id="email"
@@ -45,16 +54,24 @@ const RegisterForm = () => {
             autoComplete="email"
           />
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-semibold" htmlFor="password">
+            Password
+          </label>
           <input
+            className="rounded-md border border-stone-400 bg-stone-700/60 px-3 py-2 text-stone-50 transition outline-none focus:border-stone-200 focus:ring-2 focus:ring-stone-300/40"
             name="password"
             type="password"
             id="password"
             onChange={handleInputChange}
           />
         </div>
-        <button type="submit">Register</button>
+        <button
+          className="mt-2 w-full rounded-md bg-stone-500 px-4 py-2 font-semibold transition hover:bg-stone-700"
+          type="submit"
+        >
+          Register
+        </button>
       </form>
     </>
   );

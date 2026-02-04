@@ -14,30 +14,63 @@ const Layout = () => {
 
   return (
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          {user ? (
-            <>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                <Link to="/upload">Upload</Link>
-              </li>
-              <li>
-                <Link to="/logout">Logout</Link>
-              </li>
-            </>
-          ) : (
+      <header className="flex items-center justify-between bg-stone-600">
+        <Link
+          className="block p-4 text-center text-2xl font-bold transition-all duration-500 ease-in-out hover:bg-stone-700"
+          to="/"
+        >
+          NSFW App
+        </Link>
+        <nav>
+          <ul className="m-0 flex items-center justify-end p-0">
             <li>
-              <Link to="/login">Login</Link>
+              <Link
+                className="block p-4 text-center font-bold transition-all duration-500 ease-in-out hover:bg-stone-700"
+                to="/"
+              >
+                Home
+              </Link>
             </li>
-          )}
-        </ul>
-      </nav>
+            {user ? (
+              <>
+                <li>
+                  <Link
+                    className="block p-4 text-center font-bold transition-all duration-500 ease-in-out hover:bg-stone-700"
+                    to="/profile"
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="block p-4 text-center font-bold transition-all duration-500 ease-in-out hover:bg-stone-700"
+                    to="/upload"
+                  >
+                    Upload
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="block p-4 text-center font-bold transition-all duration-500 ease-in-out hover:bg-stone-700"
+                    to="/logout"
+                  >
+                    Logout
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <li>
+                <Link
+                  className="block p-4 text-center font-bold transition-all duration-500 ease-in-out hover:bg-stone-700"
+                  to="/login"
+                >
+                  Login
+                </Link>
+              </li>
+            )}
+          </ul>
+        </nav>
+      </header>
       <main>
         <Outlet />
       </main>
