@@ -47,8 +47,8 @@ const UserProvider = ({children}: {children: React.ReactNode}) => {
         setUser(response.user);
         navigate(location.pathname || '/');
       }
-    } catch (e) {
-      console.log((e as Error).message);
+    } catch (error) {
+      console.log((error as Error).message);
     }
   }, [getUserByToken, location.pathname, navigate]);
 
