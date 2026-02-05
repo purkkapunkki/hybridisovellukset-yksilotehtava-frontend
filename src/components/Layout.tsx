@@ -20,7 +20,7 @@ const Layout = () => {
             className="block rounded px-2 py-2 text-center text-2xl font-bold transition-all duration-500 ease-in-out hover:bg-stone-700"
             to="/"
           >
-            NSFW App
+            Picture App
           </Link>
           <nav>
             <ul className="m-0 flex items-center justify-end gap-1 p-0">
