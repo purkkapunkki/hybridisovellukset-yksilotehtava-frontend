@@ -15,6 +15,7 @@ const MediaRow = (props: {
 
   return (
     <article className="w-full rounded-md bg-stone-600">
+      <h1 className="p-2 font-bold">Owner: {item.username}</h1>
       <img
         className="h-72 w-full rounded-t-md object-cover"
         src={item.thumbnail}
@@ -32,11 +33,10 @@ const MediaRow = (props: {
           </p>
           <p>Filesize: {(item.filesize / 1024 / 1024).toFixed(2)} MB</p>
           <p>Mime-type: {item.media_type}</p>
-          <p>Owner: {item.username}</p>
         </div>
         <p>
           <button
-            className="block w-full bg-stone-500 p-2 text-center transition-all duration-500 ease-in-out hover:bg-stone-700"
+            className="block w-full rounded-md bg-stone-500 p-2 text-center transition-all duration-500 ease-in-out hover:bg-stone-700"
             onClick={() => {
               setSelectedItem(item);
             }}
