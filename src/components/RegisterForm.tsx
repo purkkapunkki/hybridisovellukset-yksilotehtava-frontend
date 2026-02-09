@@ -7,6 +7,7 @@ const RegisterForm = () => {
   const {postRegister, getUsernameAvailable, getEmailAvailable} = useUser();
   const [usernameAvailable, setUsernameAvailable] = useState<boolean>(true);
   const [emailAvailable, setEmailAvailable] = useState<boolean>(true);
+  const [registerError, setRegisterError] = useState<string>('');
 
   const initValues: RegisterCredentials = {
     username: '',
@@ -16,12 +17,17 @@ const RegisterForm = () => {
   const doRegister = async () => {
     try {
       // eslint-disable-next-line react-hooks/immutability
-      const userAvailableResponse = await getUsernameAvailable(inputs.username);
-      setUsernameAvailable(userAvailableResponse.available);
-      const result = await postRegister(inputs as RegisterCredentials);
-      console.log('post registration result', result);
+      const userResponse = await getUsernameAvailable(inputs.username);
+      setUsernameAvailable(userResponse.available);
+      const emailResponse = await getEmailAvailable(inputs.email);
+      setEmailAvailable(emailResponse.available);
+      if (userResponse.available && emailResponse.available) {
+        const result = await postRegister(inputs as RegisterCredentials);
+        console.log('post registration result', result);
+      }
     } catch (error) {
       console.log((error as Error).message);
+      setRegisterError((error as Error).message);
     }
   };
 
@@ -49,6 +55,9 @@ const RegisterForm = () => {
             onChange={handleInputChange}
             autoComplete="username"
           />
+          {!usernameAvailable && (
+            <p className="text-sm text-red-500">Username is already taken</p>
+          )}
         </div>
         <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="email">
@@ -62,6 +71,9 @@ const RegisterForm = () => {
             onChange={handleInputChange}
             autoComplete="email"
           />
+          {!emailAvailable && (
+            <p className="text-sm text-red-500">Email address not available</p>
+          )}
         </div>
         <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="password">
@@ -74,10 +86,14 @@ const RegisterForm = () => {
             id="password"
             onChange={handleInputChange}
           />
+          {registerError && (
+            <p className="text-sm text-red-500">{registerError}</p>
+          )}
         </div>
         <button
           className="mt-2 w-full rounded-md bg-stone-500 px-4 py-2 font-semibold transition hover:bg-stone-700"
           type="submit"
+          // TODO: disable when form is not valid
         >
           Register
         </button>

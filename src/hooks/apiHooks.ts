@@ -131,12 +131,12 @@ const useUser = () => {
 
   const getUsernameAvailable = async (username: string) => {
     // fetch from endpoint /users/username/:username
-    return fetchData<AvailableResponse>(`${resourceUrl}/username/'${username}`);
+    return fetchData<AvailableResponse>(`${resourceUrl}/username/${username}`);
   };
 
   const getEmailAvailable = async (email: string) => {
     // fetch from endpoint /users/email/:email
-    return fetchData<AvailableResponse>(`${resourceUrl}/email/'${email}`);
+    return fetchData<AvailableResponse>(`${resourceUrl}/email/${email}`);
   };
 
   return {postRegister, getUserByToken, getUsernameAvailable, getEmailAvailable};
