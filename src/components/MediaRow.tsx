@@ -1,17 +1,12 @@
 import type {MediaItemWithOwner} from 'hybrid-types/DBTypes';
-// import {Link} from 'react-router';
-//import {useState} from 'react';
+import {useUserContext} from '../hooks/ContextHooks';
 
 const MediaRow = (props: {
   item: MediaItemWithOwner;
   setSelectedItem: (item: MediaItemWithOwner | undefined) => void;
 }) => {
   const {item, setSelectedItem} = props;
-  //const [dummyLikes, setDummyLikes] = useState(0);
-  // Sama:
-  //const dummyLikesState = useState(0);
-  //const dummyLikes = dummyLikesState[0];
-  //const setDummyLikes = dummyLikesState[1];
+  const {user} = useUserContext();
 
   return (
     <article className="w-full rounded-md bg-stone-600">
@@ -43,19 +38,29 @@ const MediaRow = (props: {
           >
             View
           </button>
+          {/* User exists and owns the media item or is an admin */}
+          {user && (user.user_id === item.user_id || user?.level_name === 'Admin') && (
+            <>
+              <button
+                className="block w-full bg-stone-500 p-2 text-center transition-all duration-500 ease-in-out hover:bg-stone-700"
+                onClick={() => {
+                  console.log('edit media item', item, 'current user', user);
+                }}
+              >
+                Edit
+              </button>
+              <button
+                className="block w-full bg-stone-500 p-2 text-center transition-all duration-500 ease-in-out hover:bg-stone-700"
+                onClick={() => {
+                  console.log('delete media item');
+                }}
+              >
+                Delete
+              </button>
+            </>
+          )}
         </p>
       </div>
-      <>
-        {/* <Link to="/single" state={{item}}>
-          Show
-        </Link> */}
-        {/*   <td>Likes: {dummyLikes}
-        <button onClick={() => {
-          console.log('add like to', item.title);
-          setDummyLikes(dummyLikes + 1);
-        }} >Add like</button>
-      </td> */}
-      </>
     </article>
   );
 };
