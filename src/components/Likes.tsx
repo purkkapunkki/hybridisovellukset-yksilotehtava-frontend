@@ -45,7 +45,6 @@ const Likes = ({item}: LikesType) => {
   };
 
   const getLikeCount = async () => {
-    // TODO: get like count and dispatch it to the state
     if (!item) {
       return;
     }
@@ -96,7 +95,10 @@ const Likes = ({item}: LikesType) => {
 
   return (
     <>
-      <Button value="Like" onClick={handleLike} />
+      <Button
+        value={likeState.userLike ? 'Unlike' : 'Like'}
+        onClick={handleLike}
+      />
       <p>Likes: {likeState.count}</p>
     </>
   );
