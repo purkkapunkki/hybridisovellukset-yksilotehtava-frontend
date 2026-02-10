@@ -95,10 +95,7 @@ const Likes = ({item}: LikesType) => {
 
   return (
     <>
-      <Button
-        value={likeState.userLike ? 'Unlike' : 'Like'}
-        onClick={handleLike}
-      />
+      <Button value={likeState.userLike ? '👎' : '👍'} onClick={handleLike} />
       <p>Likes: {likeState.count}</p>
     </>
   );
