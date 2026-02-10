@@ -77,9 +77,26 @@ const Likes = ({item}: LikesType) => {
     }
   }
 
+  const handleLike = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!item || !token) {
+        return;
+      }
+      // If user has liked the media, delete the like. Otherwise, post the like.
+      if (likeState.userLike) {
+        // TODO: delete the like and dispatch the new like count to the state. Dispatching is already done in the getLikes and getLikeCount functions.
+      } else {
+        // TODO: post the like and dispatch the new like count to the state. Dispatching is already done in the getLikes and getLikeCount functions.
+      }
+    } catch (e) {
+      console.log('like error', (e as Error).message);
+    }
+  };
+
   return (
     <>
-      <Button value="Like" />
+      <Button value="Like" onClick={handleLike} />
       <p>Likes: {likeState.count}</p>
     </>
   );

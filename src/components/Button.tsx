@@ -1,13 +1,18 @@
-type ButtonType = {
+type ButtonType = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   value: string;
-  type?: 'basic' | 'danger' | 'warning';
+  variant?: 'basic' | 'danger' | 'warning';
 };
 
-const Button = ({value, type = 'basic'}: ButtonType) => {
+const Button = ({
+  value,
+  variant = 'basic',
+  className = '',
+  ...props
+}: ButtonType) => {
   const baseClasses =
     'block w-full p-2 text-center transition-all duration-500 ease-in-out';
   let bgClasses = '';
-  switch (type) {
+  switch (variant) {
     case 'danger':
       bgClasses = 'bg-red-500 hover:bg-red-700';
       break;
@@ -18,7 +23,11 @@ const Button = ({value, type = 'basic'}: ButtonType) => {
       bgClasses = 'bg-stone-500 hover:bg-stone-700';
       break;
   }
-  return <button className={`${baseClasses} ${bgClasses}`}>{value}</button>;
+  return (
+    <button {...props} className={`${baseClasses} ${bgClasses} ${className}`}>
+      {value}
+    </button>
+  );
 };
 
 export default Button;
