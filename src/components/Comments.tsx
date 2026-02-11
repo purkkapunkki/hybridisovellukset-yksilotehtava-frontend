@@ -1,8 +1,10 @@
+import {useRef} from 'react';
 import {useUserContext} from '../hooks/ContextHooks';
 import useForm from '../hooks/formHooks';
 import {useCommentStore} from '../stores/commentStore';
 
 const Comments = ({mediaId}: {mediaId: number}) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const {comments, addComment} = useCommentStore();
   const {user} = useUserContext();
 
@@ -18,6 +20,14 @@ const Comments = ({mediaId}: {mediaId: number}) => {
       media_id: mediaId,
     });
     //console.log('comments in zustand store:', comments);
+
+    // reset useForm state values
+    // eslint-disable-next-line react-hooks/immutability
+    setInputs(initValues);
+    // clear comment input with useRef() hook
+    if (inputRef.current) {
+      inputRef.current.value = '';
+    }
   };
 
   const {handleInputChange, handleSubmit, inputs, setInputs} = useForm(
@@ -27,7 +37,21 @@ const Comments = ({mediaId}: {mediaId: number}) => {
 
   return (
     <>
-      <h3>Comments for {mediaId}</h3>
+      <h3>Comments</h3>
+
+      {comments.length > 0 ? (
+        <ul>
+          {comments.map((comment) => (
+            <li key={comment.comment_id}>
+              {comment.created_at?.toLocaleString('fi-FI')}{' '}
+              <b>{comment.username}:</b>{' '}
+              {comment.comment_text}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No comments yet.</p>
+      )}
 
       {user && (
         <form
@@ -44,12 +68,13 @@ const Comments = ({mediaId}: {mediaId: number}) => {
               type="text"
               id="comment_text"
               onChange={handleInputChange}
+              ref={inputRef}
             />
           </div>
           <button
             className="w-full rounded-md bg-stone-500 px-4 py-2 font-semibold transition hover:bg-stone-700 disabled:cursor-not-allowed disabled:opacity-60"
             type="submit"
-            disabled={inputs.comment_text.length > 3 ? false : true}
+            disabled={inputs.comment_text.length > 0 ? false : true}
           >
             Add comment
           </button>
