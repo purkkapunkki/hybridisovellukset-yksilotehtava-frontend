@@ -1,7 +1,7 @@
 import {useEffect, useReducer} from 'react';
-import Button from './Button';
 import type {Like, MediaItemWithOwner} from 'hybrid-types/DBTypes';
 import {useLike} from '../hooks/apiHooks';
+import {Button} from './ui/button';
 
 type LikesType = {
   item: MediaItemWithOwner | undefined;
@@ -101,7 +101,9 @@ const Likes = ({item}: LikesType) => {
 
   return (
     <>
-      <Button value={likeState.userLike ? '👎' : '👍'} onClick={handleLike} />
+      <Button variant="ghost" onClick={handleLike}>
+        {likeState.userLike ? '👎' : '👍'}
+      </Button>
       <p>Likes: {likeState.count}</p>
     </>
   );

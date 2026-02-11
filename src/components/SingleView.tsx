@@ -40,7 +40,7 @@ const SingleView = (props: {
               </p>
             </div>
 
-            <Comments mediaId={item.media_id}/>
+            <Comments mediaId={item.media_id} />
             <button
               className="block w-full bg-stone-500 p-2 text-center transition-all duration-500 ease-in-out hover:bg-stone-700"
               onClick={() => {
