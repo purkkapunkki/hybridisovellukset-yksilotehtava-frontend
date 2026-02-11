@@ -1,5 +1,6 @@
 import type {MediaItemWithOwner} from 'hybrid-types/DBTypes';
 import Likes from './Likes';
+import Comments from './Comments';
 
 const SingleView = (props: {
   item: MediaItemWithOwner | undefined;
@@ -9,10 +10,10 @@ const SingleView = (props: {
   return (
     <dialog
       open
-      className="fixed inset-0 m-0 grid h-screen w-screen place-items-center border-0 bg-black/60 p-4"
+      className="inset-0 m-0 grid h-screen w-screen place-items-center border-0 bg-black/60 p-4"
     >
       {item && (
-        <article className="max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-md bg-stone-600 text-stone-50">
+        <article className="w-full max-w-4xl overflow-hidden rounded-md bg-stone-600 text-stone-50">
           {item.media_type.split('/')[0] === 'image' && (
             <img
               className="max-h-[60vh] w-full rounded-t-md object-contain"
@@ -38,6 +39,8 @@ const SingleView = (props: {
                 by user id {item.user_id}
               </p>
             </div>
+
+            <Comments mediaId={item.media_id}/>
             <button
               className="block w-full bg-stone-500 p-2 text-center transition-all duration-500 ease-in-out hover:bg-stone-700"
               onClick={() => {
