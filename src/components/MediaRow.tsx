@@ -21,7 +21,7 @@ const MediaRow = (props: {
     <Card className="w-full overflow-hidden">
       <div className="relative">
         <div className="absolute inset-0 z-10 bg-black/20 transition-colors hover:bg-black/0" />
-        <h1 className="p-2 font-bold">Owner: {item.username}</h1>
+        <h1 className="p-2 font-bold">User: {item.username}</h1>
         <img
           className="h-72 w-full object-cover"
           src={item.thumbnail}
@@ -39,7 +39,7 @@ const MediaRow = (props: {
       <CardContent>
         <div className="border-input text-muted-foreground rounded-md border p-2 text-sm">
           <p>
-            Created at: <br />{' '}
+            Posted at: <br />{' '}
             {new Date(item.created_at).toLocaleString('fi-FI')}
           </p>
           <p>Filesize: {(item.filesize / 1024 / 1024).toFixed(2)} MB</p>
