@@ -2,7 +2,7 @@ import {useEffect, useReducer} from 'react';
 import type {Like, MediaItemWithOwner} from 'hybrid-types/DBTypes';
 import {useLike} from '../hooks/apiHooks';
 import {Button} from './ui/button';
-import {ThumbsUp} from 'lucide-react';
+import {Heart} from 'lucide-react';
 
 type LikesType = {
   item: MediaItemWithOwner | undefined;
@@ -103,11 +103,7 @@ const Likes = ({item}: LikesType) => {
   return (
     <>
       <Button variant="ghost" onClick={handleLike}>
-        {likeState.userLike ? (
-          <ThumbsUp fill="white" stroke="black" />
-        ) : (
-          <ThumbsUp />
-        )}
+        {likeState.userLike ? <Heart fill="red" stroke="black" /> : <Heart />}
       </Button>
       <p>Likes: {likeState.count}</p>
     </>
