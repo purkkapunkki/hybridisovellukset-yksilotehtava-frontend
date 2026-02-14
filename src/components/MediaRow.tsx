@@ -1,32 +1,43 @@
 import type {MediaItemWithOwner} from 'hybrid-types/DBTypes';
-// import {Link} from 'react-router';
-//import {useState} from 'react';
+import {useUserContext} from '../hooks/ContextHooks';
+import {Button} from './ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from './ui/card';
 
 const MediaRow = (props: {
   item: MediaItemWithOwner;
   setSelectedItem: (item: MediaItemWithOwner | undefined) => void;
 }) => {
   const {item, setSelectedItem} = props;
-  //const [dummyLikes, setDummyLikes] = useState(0);
-  // Sama:
-  //const dummyLikesState = useState(0);
-  //const dummyLikes = dummyLikesState[0];
-  //const setDummyLikes = dummyLikesState[1];
+  const {user} = useUserContext();
 
   return (
-    <article className="w-full rounded-md bg-stone-600">
-      <h1 className="p-2 font-bold">Owner: {item.username}</h1>
-      <img
-        className="h-72 w-full rounded-t-md object-cover"
-        src={item.thumbnail}
-        alt={item.title}
-      />
-      <div className="p-4">
-        <h3 className="text-center text-2xl">{item.title}</h3>
-        <p className="max-w-full overflow-clip font-bold text-nowrap text-ellipsis text-stone-300">
+    <Card className="w-full overflow-hidden">
+      <div className="relative">
+        <div className="absolute inset-0 z-10 bg-black/20 transition-colors hover:bg-black/0" />
+        <h1 className="p-2 font-bold">Owner: {item.username}</h1>
+        <img
+          className="h-72 w-full object-cover"
+          src={item.thumbnail}
+          alt={item.title}
+        />
+      </div>
+      <CardHeader>
+        <CardTitle className="scroll-m-20 text-2xl font-semibold tracking-tight">
+          {item.title}
+        </CardTitle>
+        <CardDescription className="max-w-full overflow-hidden text-nowrap text-ellipsis">
           {item.description}
-        </p>
-        <div className="my-2 rounded-md border-1 border-stone-400 p-2">
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="border-input text-muted-foreground rounded-md border p-2 text-sm">
           <p>
             Created at: <br />{' '}
             {new Date(item.created_at).toLocaleString('fi-FI')}
@@ -34,29 +45,42 @@ const MediaRow = (props: {
           <p>Filesize: {(item.filesize / 1024 / 1024).toFixed(2)} MB</p>
           <p>Mime-type: {item.media_type}</p>
         </div>
-        <p>
-          <button
-            className="block w-full rounded-md bg-stone-500 p-2 text-center transition-all duration-500 ease-in-out hover:bg-stone-700"
-            onClick={() => {
-              setSelectedItem(item);
-            }}
-          >
-            View
-          </button>
-        </p>
-      </div>
-      <>
-        {/* <Link to="/single" state={{item}}>
-          Show
-        </Link> */}
-        {/*   <td>Likes: {dummyLikes}
-        <button onClick={() => {
-          console.log('add like to', item.title);
-          setDummyLikes(dummyLikes + 1);
-        }} >Add like</button>
-      </td> */}
-      </>
-    </article>
+      </CardContent>
+      <CardFooter className="flex flex-col gap-2">
+        <Button
+          className="w-full"
+          onClick={() => {
+            setSelectedItem(item);
+          }}
+        >
+          View
+        </Button>
+        {/* User exists and owns the media item or is an admin */}
+        {user &&
+          (user.user_id === item.user_id || user?.level_name === 'Admin') && (
+            <>
+              <Button
+                className="w-full"
+                onClick={() => {
+                  console.log('edit media item', item, 'current user', user);
+                }}
+              >
+                Edit
+              </Button>
+
+              <Button
+                variant="destructive"
+                className="w-full"
+                onClick={() => {
+                  console.log('delete media item');
+                }}
+              >
+                Delete
+              </Button>
+            </>
+          )}
+      </CardFooter>
+    </Card>
   );
 };
 
