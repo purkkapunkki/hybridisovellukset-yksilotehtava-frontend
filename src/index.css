@@ -127,3 +127,10 @@
     @apply font-sans;
   }
 }
+
+@theme {
+  --color-darkpurple: #14073d;
+  --color-darkpink: #e14781;
+  --color-lightpink: #ed6cc0;
+  --color-brightorange: #fda040;
+}
