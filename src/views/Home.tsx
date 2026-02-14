@@ -2,6 +2,8 @@ import type {MediaItemWithOwner} from 'hybrid-types/DBTypes';
 import {useState} from 'react';
 import MediaRow from '../components/MediaRow';
 import SingleView from '../components/SingleView';
+import FollowedList from '../components/FollowedList';
+import PopularTagsList from '../components/PopularTagsList';
 import {useMedia} from '../hooks/apiHooks';
 
 const Home = () => {
@@ -18,15 +20,23 @@ const Home = () => {
       {selectedItem && (
         <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />
       )}
-      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {mediaArray.map((item) => (
-          <MediaRow
-            key={item.media_id}
-            item={item}
-            setSelectedItem={setSelectedItem}
-          />
-        ))}
-      </section>
+      <div className="flex space-x-4">
+        <section className="flex-1">
+          <PopularTagsList />
+        </section>
+        <section className="flex-1">
+          {mediaArray.map((item) => (
+            <MediaRow
+              key={item.media_id}
+              item={item}
+              setSelectedItem={setSelectedItem}
+            />
+          ))}
+        </section>
+        <section className="flex-1">
+          <FollowedList />
+        </section>
+      </div>
     </>
   );
 };
