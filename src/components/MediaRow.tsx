@@ -19,12 +19,12 @@ const MediaRow = (props: {
 
   return (
     <Card className="w-full overflow-hidden">
-      <div className="relative">
+      <div className="relative p-4">
         <div className="absolute inset-0 z-10 bg-black/20 transition-colors hover:bg-black/0" />
         <img className="pl-2" src="" alt="user-avatar" />
         <h1 className="p-2 font-bold">User: {item.username}</h1>
         <img
-          className="h-72 w-full object-cover"
+          className="h-72 w-full rounded-md object-cover"
           src={item.thumbnail}
           alt={item.title}
         />
