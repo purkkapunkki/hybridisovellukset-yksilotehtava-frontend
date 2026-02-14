@@ -21,6 +21,7 @@ const MediaRow = (props: {
     <Card className="w-full overflow-hidden">
       <div className="relative">
         <div className="absolute inset-0 z-10 bg-black/20 transition-colors hover:bg-black/0" />
+        <img className="pl-2" src="" alt="user-avatar" />
         <h1 className="p-2 font-bold">User: {item.username}</h1>
         <img
           className="h-72 w-full object-cover"
@@ -44,6 +45,7 @@ const MediaRow = (props: {
           </p>
           <p>Filesize: {(item.filesize / 1024 / 1024).toFixed(2)} MB</p>
           <p>Mime-type: {item.media_type}</p>
+          <p>Tags:</p>
         </div>
       </CardContent>
       <CardFooter className="flex flex-col gap-2">
@@ -55,6 +57,9 @@ const MediaRow = (props: {
         >
           View
         </Button>
+        <button className="block w-full rounded-md bg-stone-500 p-2 text-center transition-all duration-500 ease-in-out hover:bg-stone-700">
+          Repost
+        </button>
         {/* User exists and owns the media item or is an admin */}
         {user &&
           (user.user_id === item.user_id || user?.level_name === 'Admin') && (
