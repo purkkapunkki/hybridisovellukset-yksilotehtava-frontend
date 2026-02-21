@@ -3,12 +3,14 @@ import {useUser} from '../hooks/apiHooks';
 import useForm from '../hooks/formHooks';
 import type {RegisterCredentials} from '../types/LocalTypes';
 import {Button} from './ui/button';
+import {useUserContext} from '@/hooks/ContextHooks';
 
 const RegisterForm = () => {
   const {postRegister, getUsernameAvailable, getEmailAvailable} = useUser();
   const [usernameAvailable, setUsernameAvailable] = useState<boolean>(true);
   const [emailAvailable, setEmailAvailable] = useState<boolean>(true);
   const [registerError, setRegisterError] = useState<string>('');
+  const {handleLogin} = useUserContext();
 
   const initValues: RegisterCredentials = {
     username: '',
@@ -24,8 +26,12 @@ const RegisterForm = () => {
       const emailResponse = await getEmailAvailable(inputs.email);
       setEmailAvailable(emailResponse.available);
       if (userResponse.available && emailResponse.available) {
-        const result = await postRegister(inputs as RegisterCredentials);
-        console.log('post registration result', result);
+        await postRegister(inputs as RegisterCredentials);
+        const credentials = {
+          username: inputs.username,
+          password: inputs.password,
+        };
+        handleLogin(credentials);
       }
     } catch (error) {
       console.log((error as Error).message);
