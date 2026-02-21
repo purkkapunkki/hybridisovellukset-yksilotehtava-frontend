@@ -2,6 +2,7 @@ import {Link, Outlet} from 'react-router';
 import {useUserContext} from '../hooks/ContextHooks';
 import {useEffect} from 'react';
 import SearchBar from '../components/SearchBar';
+import Logo from '../components/images/RETROWAVELOGO.png';
 
 const Layout = () => {
   const {handleAutoLogin, user, loading} = useUserContext();
@@ -18,10 +19,10 @@ const Layout = () => {
       <header className="bg-card text-card-foreground rounded-md shadow-sm">
         <div className="mx-auto mb-4 flex w-full max-w-6xl items-center justify-between px-4 py-2 sm:px-6">
           <Link
-            className="hover:bg-accent hover:text-accent-foreground block rounded px-2 py-2 text-center text-2xl font-bold transition-all duration-500 ease-in-out"
+            className="block rounded px-2 py-2 text-center text-2xl font-bold transition-all duration-500 ease-in-out"
             to="/"
           >
-            Picture App
+            <img src={Logo} alt="RetroWaveLogo" className="h-20 w-100" />
           </Link>
 
           <nav>
