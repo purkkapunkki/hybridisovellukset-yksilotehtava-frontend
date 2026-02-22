@@ -25,7 +25,7 @@ const Layout = () => {
             <img src={Logo} alt="RetroWaveLogo" className="h-20 w-100" />
           </Link>
 
-          <nav>
+          <nav className="font-vcr text-white">
             <ul className="m-0 flex items-center justify-end gap-1 p-0">
               <SearchBar />
               <li>
