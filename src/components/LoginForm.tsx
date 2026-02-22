@@ -2,6 +2,7 @@ import useForm from '../hooks/formHooks';
 import type {Credentials} from '../types/LocalTypes';
 import {useUserContext} from '../hooks/ContextHooks';
 import {Button} from './ui/button';
+import {useState} from 'react';
 
 const LoginForm = () => {
   const initValues: Credentials = {
@@ -9,13 +10,15 @@ const LoginForm = () => {
     password: '',
   };
   const {handleLogin} = useUserContext();
+  const [loginError, setLoginError] = useState<string>('');
 
   const doLogin = async () => {
     try {
       // eslint-disable-next-line react-hooks/immutability
-      handleLogin(inputs as Credentials);
-    } catch (e) {
-      console.log((e as Error).message);
+      await handleLogin(inputs as Credentials);
+    } catch (error) {
+      console.log((error as Error).message);
+      setLoginError((error as Error).message);
     }
   };
 
@@ -57,6 +60,7 @@ const LoginForm = () => {
             autoComplete="current-password"
           />
         </div>
+        {loginError && <p className="text-destructive text-sm">{loginError}</p>}
         <Button className="mt-2 w-full font-semibold" type="submit">
           Login
         </Button>

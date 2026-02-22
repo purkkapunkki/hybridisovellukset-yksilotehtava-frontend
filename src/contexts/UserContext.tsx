@@ -18,14 +18,10 @@ const UserProvider = ({children}: {children: React.ReactNode}) => {
 
   // login, logout and autologin functions are here instead of components
   const handleLogin = async (credentials: Credentials) => {
-    try {
-      const result: LoginResponse = await postLogin(credentials);
-      localStorage.setItem('token', result.token);
-      setUser(result.user);
-      navigate('/');
-    } catch (e) {
-      console.log((e as Error).message);
-    }
+    const result: LoginResponse = await postLogin(credentials);
+    localStorage.setItem('token', result.token);
+    setUser(result.user);
+    navigate('/');
   };
 
   const handleLogout = () => {
