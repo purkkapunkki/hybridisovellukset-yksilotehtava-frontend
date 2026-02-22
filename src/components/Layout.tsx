@@ -2,7 +2,7 @@ import {Link, Outlet} from 'react-router';
 import {useUserContext} from '../hooks/ContextHooks';
 import {useEffect} from 'react';
 import SearchBar from '../components/SearchBar';
-import Logo from '../components/images/RETROWAVELOGO.png';
+import Logo from '../images/RETROWAVELOGO.png';
 
 const Layout = () => {
   const {handleAutoLogin, user, loading} = useUserContext();
