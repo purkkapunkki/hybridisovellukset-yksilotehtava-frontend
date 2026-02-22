@@ -2,7 +2,7 @@ import {Link} from 'react-router';
 
 const FollowedList = () => {
   return (
-    <article className="flex flex-col items-center rounded-md bg-stone-600 p-2">
+    <article className="from-midpurple to-darkermidpurple flex flex-col items-center rounded-md bg-linear-to-br p-2">
       <h1>Popular tags:</h1>
       <li>
         <Link
