@@ -2,6 +2,7 @@ import type {User, UserWithNoPassword} from 'hybrid-types/DBTypes';
 
 export type Credentials = Pick<User, 'username' | 'password'>;
 export type RegisterCredentials = Pick<User, 'username' | 'password' | 'email'>;
+export type UserDetails = Pick<User, 'email' | 'username'>;
 
 export type AuthContextType = {
   user: UserWithNoPassword | null;

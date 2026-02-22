@@ -1,13 +1,21 @@
 import React, {useState} from 'react';
 
-const useForm = (callback: () => void, initState: Record<string, string>) => {
+type Callback<T> = (
+  values: T,
+  setValues: React.Dispatch<React.SetStateAction<T>>,
+) => Promise<void>;
+
+const useForm = <T extends Record<string, string>>(
+  callback: Callback<T>,
+  initState: T,
+) => {
   const [inputs, setInputs] = useState(initState);
 
-  const handleSubmit = (event: React.SyntheticEvent) => {
+  const handleSubmit = async (event: React.SyntheticEvent) => {
     if (event) {
       event.preventDefault();
     }
-    callback();
+    await callback(inputs, setInputs);
   };
 
   const handleInputChange = (

@@ -7,7 +7,11 @@ import type {
 } from 'hybrid-types/DBTypes';
 import {useCallback, useEffect, useState} from 'react';
 import {fetchData} from '../utils/fetch-data';
-import type {Credentials, RegisterCredentials} from '../types/LocalTypes';
+import type {
+  Credentials,
+  RegisterCredentials,
+  UserDetails,
+} from '../types/LocalTypes';
 import type {
   AvailableResponse,
   LoginResponse,
@@ -119,6 +123,22 @@ const useUser = () => {
     return registerResult;
   };
 
+  const putUser = async (
+    inputs: UserDetails,
+    token: string,
+  ): Promise<UserResponse> => {
+    const fetchOptions = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
+      body: JSON.stringify(inputs),
+    };
+    const putResult = await fetchData<UserResponse>(resourceUrl, fetchOptions);
+    return putResult;
+  };
+
   const getUserByToken = useCallback(
     async (token: string) => {
       const options = {
@@ -144,6 +164,7 @@ const useUser = () => {
 
   return {
     postRegister,
+    putUser,
     getUserByToken,
     getUsernameAvailable,
     getEmailAvailable,
