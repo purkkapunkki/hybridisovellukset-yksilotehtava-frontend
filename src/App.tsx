@@ -7,6 +7,7 @@ import Upload from './views/Upload';
 import Single from './views/Single';
 import Login from './views/Login';
 import Logout from './views/Logout';
+import TagSearch from './views/TagSearch';
 import {UserProvider} from './contexts/UserContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -44,6 +45,7 @@ const App = () => {
               />
               <Route path="/single" element={<Single />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/tagsearch" element={<TagSearch />} />
               <Route
                 path="/logout"
                 element={
