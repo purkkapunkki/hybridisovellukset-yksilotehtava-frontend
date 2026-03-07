@@ -2,6 +2,7 @@ import {useRef, useState} from 'react';
 import useForm from '../hooks/formHooks';
 import {useFile, useMedia} from '../hooks/apiHooks';
 import {Button} from '../components/ui/button';
+import Footer from '@/components/Footer';
 
 const Upload = () => {
   const [uploading, setUploading] = useState<boolean>(false);
@@ -136,6 +137,7 @@ const Upload = () => {
           Uploading...
         </p>
       )}
+      <Footer />
     </>
   );
 };

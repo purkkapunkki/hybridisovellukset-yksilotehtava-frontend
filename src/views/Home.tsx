@@ -4,6 +4,7 @@ import MediaRow from '../components/MediaRow';
 import SingleView from '../components/SingleView';
 import FollowedList from '../components/FollowedList';
 import PopularTagsList from '../components/PopularTagsList';
+import Footer from '../components/Footer';
 import {useMedia} from '../hooks/apiHooks';
 import {useUserContext} from '@/hooks/ContextHooks';
 
@@ -47,6 +48,7 @@ const Home = () => {
           <FollowedList />
         </section>
       </div>
+      <Footer />
     </>
   );
 };

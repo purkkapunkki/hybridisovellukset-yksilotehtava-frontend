@@ -5,6 +5,7 @@ import type {UserDetails} from '@/types/LocalTypes';
 import {useState} from 'react';
 import Input from '@/components/ui/input';
 import {useUser} from '@/hooks/apiHooks';
+import Footer from '@/components/Footer';
 
 const Profile = () => {
   const {user} = useUserContext();
@@ -109,6 +110,7 @@ const Profile = () => {
           </form>
         </article>
       )}
+      <Footer />
     </>
   );
 };
