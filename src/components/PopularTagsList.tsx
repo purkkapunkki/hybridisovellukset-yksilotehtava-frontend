@@ -6,8 +6,8 @@ const FollowedList = () => {
       <h1>Popular tags:</h1>
       <li>
         <Link
-          className="block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out hover:bg-stone-700"
-          to="/"
+            className="block rounded px-3 py-2 text-center transition-all duration-500 ease-in-out hover:bg-white hover:text-black"
+            to="/tagsearch"
         >
           #Popular tag here
         </Link>
