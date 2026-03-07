@@ -19,7 +19,6 @@ const Profile = () => {
 
   const doEditUser = async <T extends Record<string, string>>(
     values: T,
-    setValues: React.Dispatch<React.SetStateAction<T>>,
   ): Promise<void> => {
     const token = localStorage.getItem('token');
     if (!user || !token) {
