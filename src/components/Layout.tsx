@@ -40,18 +40,18 @@ const Layout = () => {
                 <>
                   <li>
                     <Link
-                      className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
-                      to="/profile"
+                      className="text-lightpink hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
+                      to="/upload"
                     >
-                      Profile
+                      Upload
                     </Link>
                   </li>
                   <li>
                     <Link
                       className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
-                      to="/upload"
+                      to="/profile"
                     >
-                      Upload
+                      Profile
                     </Link>
                   </li>
                   <li>
