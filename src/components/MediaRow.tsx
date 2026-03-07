@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from './ui/card';
+import Likes from './Likes';
 
 const MediaRow = (props: {
   item: MediaItemWithOwner;
@@ -18,11 +19,12 @@ const MediaRow = (props: {
   const {user} = useUserContext();
 
   return (
-    <Card className="w-full overflow-hidden">
+    <Card className="mb-5 w-full overflow-hidden">
       <div className="relative p-4">
         <div className="absolute inset-0 z-10 bg-black/20 transition-colors hover:bg-black/0" />
         <img className="pl-2" src="" alt="user-avatar" />
         <h1 className="p-2 font-bold">User: {item.username}</h1>
+        <p>Posted at: {new Date(item.created_at).toLocaleString('fi-FI')}</p>
         <img
           className="h-72 w-full rounded-md object-cover"
           src={item.thumbnail}
@@ -39,12 +41,7 @@ const MediaRow = (props: {
       </CardHeader>
       <CardContent>
         <div className="border-input text-muted-foreground rounded-md border p-2 text-sm">
-          <p>
-            Posted at: <br />{' '}
-            {new Date(item.created_at).toLocaleString('fi-FI')}
-          </p>
-          <p>Filesize: {(item.filesize / 1024 / 1024).toFixed(2)} MB</p>
-          <p>Mime-type: {item.media_type}</p>
+          <Likes item={item} />
           <p>Tags:</p>
         </div>
       </CardContent>
@@ -55,11 +52,16 @@ const MediaRow = (props: {
             setSelectedItem(item);
           }}
         >
-          View
+          Comment
         </Button>
-        <button className="block w-full rounded-md bg-stone-500 p-2 text-center transition-all duration-500 ease-in-out hover:bg-stone-700">
+        <Button
+          className="w-full"
+          onClick={() => {
+            setSelectedItem(item);
+          }}
+        >
           Repost
-        </button>
+        </Button>
         {/* User exists and owns the media item or is an admin */}
         {user &&
           (user.user_id === item.user_id || user?.level_name === 'Admin') && (

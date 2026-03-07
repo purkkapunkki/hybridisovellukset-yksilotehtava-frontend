@@ -1,5 +1,4 @@
 import type {MediaItemWithOwner} from 'hybrid-types/DBTypes';
-import Likes from './Likes';
 import Comments from './Comments';
 import {Button} from './ui/button';
 import {X} from 'lucide-react';
@@ -41,7 +40,6 @@ const SingleView = (props: {
           )}
           <div className="p-4">
             <h3 className="text-center text-2xl">{item.title}</h3>
-            <Likes item={item} />
             <p>Owner: {item.username}</p>
             <p className="max-w-full">{item.description}</p>
             <div className="border-input my-2 rounded-md border p-2">
