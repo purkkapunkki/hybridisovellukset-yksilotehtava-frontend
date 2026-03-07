@@ -75,7 +75,9 @@ const RegisterForm = () => {
 
   return (
     <>
-      <h2 className="text-center text-2xl font-semibold">Register</h2>
+      <h2 className="font-vcr mt-4 text-center text-2xl font-semibold text-white">
+        Register
+      </h2>
       <form
         onSubmit={handleSubmit}
         className="bg-card text-card-foreground mx-auto mt-4 flex w-full max-w-md flex-col gap-4 rounded-md p-6 shadow"
