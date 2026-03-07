@@ -5,13 +5,23 @@ import SingleView from '../components/SingleView';
 import FollowedList from '../components/FollowedList';
 import PopularTagsList from '../components/PopularTagsList';
 import {useMedia} from '../hooks/apiHooks';
+import {useUserContext} from '@/hooks/ContextHooks';
 
 const Home = () => {
   const [selectedItem, setSelectedItem] = useState<
     MediaItemWithOwner | undefined
   >(undefined);
 
+  const {user} = useUserContext();
   const {mediaArray} = useMedia();
+
+  if (user === null) {
+    return '';
+  }
+
+  const ownersMedia = mediaArray.filter(
+    (item) => item.user_id === user.user_id,
+  );
 
   return (
     <>
@@ -25,7 +35,7 @@ const Home = () => {
           <PopularTagsList />
         </section>
         <section className="flex-1">
-          {mediaArray.map((item) => (
+          {ownersMedia.map((item) => (
             <MediaRow
               key={item.media_id}
               item={item}
