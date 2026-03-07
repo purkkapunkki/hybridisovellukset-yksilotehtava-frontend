@@ -30,7 +30,7 @@ const Home = () => {
       {selectedItem && (
         <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />
       )}
-      <div className="bg-darkpurple flex space-x-4">
+      <div className="bg-darkpurple mr-5 ml-5 flex space-x-4">
         <section className="flex-1">
           <PopularTagsList />
         </section>
