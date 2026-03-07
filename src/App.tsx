@@ -1,5 +1,6 @@
 import {Route, BrowserRouter as Router, Routes} from 'react-router';
 import Layout from './components/Layout';
+import AnonymousHome from './views/AnonymousHome';
 import Home from './views/Home';
 import Profile from './views/Profile';
 import Upload from './views/Upload';
@@ -16,6 +17,14 @@ const App = () => {
         <UserProvider>
           <Routes>
             <Route element={<Layout />}>
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute anonymousRoute={<AnonymousHome />}>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
               <Route path="/" element={<Home />} />
               <Route
                 path="/profile"
