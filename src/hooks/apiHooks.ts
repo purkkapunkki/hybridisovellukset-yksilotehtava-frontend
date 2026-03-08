@@ -3,6 +3,7 @@ import type {
   Like,
   MediaItem,
   MediaItemWithOwner,
+  Tag,
   UserWithNoPassword,
 } from 'hybrid-types/DBTypes';
 import {useCallback, useEffect, useState} from 'react';
@@ -291,6 +292,31 @@ const useComment = () => {
 };
 
 const useTags = () => {
+  const [tags, setTags] = useState<Tag[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getTags = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const tagsData = await fetchData<Tag[]>(
+          import.meta.env.VITE_MEDIA_API + '/tags',
+        );
+        setTags(tagsData);
+      } catch (err) {
+        console.error(err);
+        setError('Failed to load tags');
+        setTags([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getTags();
+  }, []);
+
   const postTag = async (tagName: string, mediaId: number, token: string) => {
     const fetchOptions = {
       method: 'POST',
@@ -306,7 +332,7 @@ const useTags = () => {
     );
   };
 
-  return {postTag};
+  return {tags, loading, error, postTag};
 };
 
 export {
