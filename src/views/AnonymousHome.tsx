@@ -12,12 +12,12 @@ const AnomymousHome = () => {
           <img src={Logo} alt="RetroWaveLogo" className="h-20 w-100" />
           <h2 className="font-vcr">
             Welcome to RETROWAVE, where you can post media from the 80's! Start
-            rewinding your nostalgia trip by
+            rewinding your nostalgia trip by{' '}
             <Link
-              className="hover:bg-accent hover:text-accent-foreground transition-all duration-500 ease-in-out"
+              className="hover:bg-accent hover:text-accent-foreground text-lightpink transition-all duration-500 ease-in-out"
               to="/login"
             >
-              <span className="text-lightpink">registering</span>
+              registering
             </Link>{' '}
             now!
           </h2>
