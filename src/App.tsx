@@ -45,7 +45,14 @@ const App = () => {
               />
               <Route path="/single" element={<Single />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/tagsearch" element={<TagSearch />} />
+              <Route
+                path="/tag/:tagname"
+                element={
+                  <ProtectedRoute>
+                    <TagSearch />
+                  </ProtectedRoute>
+                }
+              />
               <Route
                 path="/logout"
                 element={

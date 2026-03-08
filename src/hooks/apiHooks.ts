@@ -335,6 +335,58 @@ const useTags = () => {
   return {tags, loading, error, postTag};
 };
 
+const useMediaByTag = (tag_id: number) => {
+  const [mediaArray, setMediaArray] = useState<MediaItemWithOwner[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getMediaByTag = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        // TODO: Refactor this to use a dedicated endpoint for tag ID resolution instead of fetching all tags
+        const media = await fetchData<MediaItem[]>(
+          import.meta.env.VITE_MEDIA_API + '/tags/bytag/' + tag_id,
+        );
+        const mediaWithOwners = await Promise.all<MediaItemWithOwner>(
+          media.map(async (item) => {
+            try {
+              const owner = await fetchData<UserWithNoPassword>(
+                `${import.meta.env.VITE_AUTH_API}/users/${item.user_id}`,
+              );
+              const mediaItemWithOwner: MediaItemWithOwner = {
+                ...item,
+                username: owner.username,
+              };
+              return mediaItemWithOwner;
+            } catch (error) {
+              console.error(error);
+              return {
+                ...item,
+                username: 'not found',
+              };
+            }
+          }),
+        );
+        setMediaArray(mediaWithOwners);
+      } catch (err) {
+        console.error(err);
+        setError('Failed to load media for this tag');
+        setMediaArray([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (tag_id > 0) {
+      getMediaByTag();
+    }
+  }, [tag_id]);
+
+  return {mediaArray, loading, error};
+};
+
 export {
   useMedia,
   useAuthentication,
@@ -343,4 +395,5 @@ export {
   useLike,
   useComment,
   useTags,
+  useMediaByTag,
 };
