@@ -1,17 +1,23 @@
 import {useRef, useState} from 'react';
 import useForm from '../hooks/formHooks';
-import {useFile, useMedia} from '../hooks/apiHooks';
+import {useFile, useMedia, useTags} from '../hooks/apiHooks';
 import {Button} from '../components/ui/button';
 import Footer from '@/components/Footer';
+
+// helpers are implemented in utils/uploadHelpers.ts
+import {normalizeTagNames, validateForm} from '../utils/uploadHelpers';
 
 const Upload = () => {
   const [uploading, setUploading] = useState<boolean>(false);
   const [file, setFile] = useState<File | null>(null);
   const {postFile} = useFile();
   const {postMedia} = useMedia();
+  const {postTag} = useTags();
   const fileRef = useRef<HTMLInputElement | null>(null);
 
-  const initValues = {title: '', description: ''};
+  const initValues = {title: '', description: '', tags: ''};
+
+  const isFormValid = () => validateForm(file, inputs.title, inputs.tags);
 
   const doUpload = async () => {
     const token = localStorage.getItem('token');
@@ -25,6 +31,20 @@ const Upload = () => {
       console.log('file upload response', uploadResponse);
       const mediaResponse = await postMedia(uploadResponse, inputs, token);
       console.log('postMedia response', mediaResponse);
+
+      // send tags one by one after media gets an id
+      const tagNames = normalizeTagNames(inputs.tags);
+      if (tagNames.length) {
+        const mediaId = mediaResponse.media.media_id;
+        await Promise.all(
+          tagNames.map((tagName) =>
+            postTag(tagName, mediaId, token).catch((err) => {
+              console.error('tag post failed', tagName, err);
+            }),
+          ),
+        );
+      }
+
       // reset form (or redirect to home view)
       resetForm();
     } catch (error) {
@@ -91,6 +111,19 @@ const Upload = () => {
           ></textarea>
         </div>
         <div className="flex flex-col gap-1">
+          <label className="text-sm font-semibold" htmlFor="tags">
+            Tags
+          </label>
+          <input
+            className="border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-md border px-3 py-2 transition outline-none focus:ring-2"
+            name="tags"
+            type="text"
+            id="tags"
+            onChange={handleInputChange}
+            value={inputs.tags}
+          />
+        </div>
+        <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="file">
             File
           </label>
@@ -117,7 +150,7 @@ const Upload = () => {
         <Button
           className="w-full font-semibold"
           type="submit"
-          disabled={file && inputs.title.length > 3 ? false : true}
+          disabled={!isFormValid()}
         >
           Upload
         </Button>

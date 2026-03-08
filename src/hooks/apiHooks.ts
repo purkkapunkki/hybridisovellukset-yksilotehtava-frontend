@@ -290,4 +290,31 @@ const useComment = () => {
   return {postComment, getCommentsByMediaId};
 };
 
-export {useMedia, useAuthentication, useUser, useFile, useLike, useComment};
+const useTags = () => {
+  const postTag = async (tagName: string, mediaId: number, token: string) => {
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
+      body: JSON.stringify({tag_name: tagName, media_id: mediaId}),
+    };
+    return fetchData<{message: string}>(
+      import.meta.env.VITE_MEDIA_API + '/tags',
+      fetchOptions,
+    );
+  };
+
+  return {postTag};
+};
+
+export {
+  useMedia,
+  useAuthentication,
+  useUser,
+  useFile,
+  useLike,
+  useComment,
+  useTags,
+};
