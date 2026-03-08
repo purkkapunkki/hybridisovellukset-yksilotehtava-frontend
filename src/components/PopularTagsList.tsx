@@ -15,7 +15,7 @@ const PopularTagsList = ({currentTag}: PopularTagsListProps) => {
 
   return (
     <article className="from-midpurple to-darkermidpurple flex flex-col items-center rounded-md bg-linear-to-br p-2 font-bold text-white">
-      <h1 className="font-vcr">Popular tags:</h1>
+      <h1 className="font-vcr text-xl">Popular tags:</h1>
       {error ? (
         <p className="text-sm text-red-300">{error}</p>
       ) : (
@@ -26,7 +26,7 @@ const PopularTagsList = ({currentTag}: PopularTagsListProps) => {
               <li key={tag.tag_id}>
                 <button
                   onClick={() => handleTagClick(tag.tag_name)}
-                  className={`block rounded px-3 py-2 text-center transition-colors ${
+                  className={`block cursor-pointer rounded px-3 py-2 text-center transition-colors ${
                     isActive
                       ? 'bg-accent text-accent-foreground'
                       : 'hover:bg-accent hover:text-accent-foreground'
