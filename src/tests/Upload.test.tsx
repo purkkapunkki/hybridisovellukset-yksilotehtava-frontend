@@ -56,7 +56,12 @@ test('uploading triggers tag API calls for normalized tags', async () => {
   const mockedUseTags = useTags as unknown as MockedFunction<typeof useTags>;
   mockedUseFile.mockReturnValue({postFile: mockPostFile});
   mockedUseMedia.mockReturnValue({mediaArray: [], postMedia: mockPostMedia});
-  mockedUseTags.mockReturnValue({postTag: mockPostTag});
+  mockedUseTags.mockReturnValue({
+    postTag: mockPostTag,
+    tags: [],
+    loading: false,
+    error: null,
+  });
 
   render(<Upload />);
 
