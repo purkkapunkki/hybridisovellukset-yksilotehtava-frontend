@@ -345,7 +345,6 @@ const useMediaByTag = (tag_id: number) => {
       try {
         setLoading(true);
         setError(null);
-        // TODO: Refactor this to use a dedicated endpoint for tag ID resolution instead of fetching all tags
         const media = await fetchData<MediaItem[]>(
           import.meta.env.VITE_MEDIA_API + '/tags/bytag/' + tag_id,
         );
