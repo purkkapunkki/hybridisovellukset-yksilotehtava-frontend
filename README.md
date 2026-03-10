@@ -1,79 +1,164 @@
-# Hybrid Applications 2026
+# Retrowave mediapostaussivusto
 
-Example React project.
+Retrowave sivustolla voi selata sekä myös jakaa/postata omia 80-luvun media aiheisia kuvia. Sivusto tarkoitettu pääasiallisesti henkilöille, jotka pitävät nostalgiasta ja 80-luvun mediasta.
 
-Open [site](https://users.metropolia.fi/~nellili/hybrid26/tailwind/) to view it in the browser.
+## Toiminnallisuudet
 
-## React + TypeScript + Vite
+-Kirjautumattoman käyttäjän rekisteröinti
+-Kirjautumattoman käyttäjän sisäänkirjautuminen
+-Kirjautuneen käyttäjän uloskirjautuminen
+-Kirjautunut käyttäjä voi luoda omia posteja, jotka sisältävät otsikon, kuvauksen, tagit ja media tiedoston
+-Kirjautunut käyttäjä voi tykätä posteista
+-Kirjautunut käyttäjä voi kommentoida postauksia
+-Kirjautunut käyttäjä voi muokata postaustaan
+-Kirjautunut käyttäjä voi muokata profiilitietojaan
+-Kirjautunut käyttäjä voi klikata tagia ja selata sen sisältämää mediaa
+-Videoiden thumbnailit ei toimi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Käyttöönotto
 
-Currently, two official plugins are available:
+### 1. Backend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### Paikallinen kehitys
 
-## React Compiler
+1. Luo kanta
+2. Luo käyttäjä, jolla on oikeudet kantaan
+3. Asenna ja käynnistä backend-sovellukset:
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+```bash
+# Kloonaa repo
+git clone <repon URL>
+# Siirry repon kansioon
+cd hybridisovellukset-yksilotehtava-backend
+# Asenna riippuvuudet, ja luo .env-tiedostot kaikkiin sovelluksiin
+cd hybrid-types
+npm run install
 
-## Expanding the ESLint configuration
+cd ../hybrid-auth-server
+npm run install
+cp .env.sample .env
+nano .env
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+cd ../hybrid-media-api
+npm run install
+cp .env.sample .env
+nano .env
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+cd ../hybrid-upload-server
+npm run install
+cp .env.sample .env
+nano .env
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+# Käynnistä kehityspalvelin
+cd ..
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Frontend
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+#### Paikallinen kehitys
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+# Kloonaa repo
+git clone <repon URL>
+# Siirry repon kansioon
+cd hybridisovellukset-yksilotehtava-frontend
+# Asenna riippuvuudet
+npm run install
+# Luo sopiva .env-tiedosto
+cp .env.sample .env
+nano .env
+# Käynnistä kehityspalvelin
+npm run dev
 ```
+
+#### Esimerkkiskripti frontendin rakennukseen palvelimella
+
+Tämän voi ajaa SSH-yhteydellä kun koodi on päivittynyt.
+
+```bash
+cd ~/hybridisovellukset-yksilotehtava-frontend/ &&
+       echo "Running 'git checkout main'" &&
+       git checkout main &&
+       echo "Running 'git pull'" &&
+       git pull &&
+       echo "Running 'npm install'" &&
+       npm install &&
+       echo "Running 'npm run build'" &&
+       npm run build &&
+       echo "Clearing the html directory" &&
+       rm -rf /var/www/html/* &&
+       echo "Moving frontend files to the html directory" &&
+       cp -r dist/* /var/www/html/ &&
+       echo "Done"
+```
+
+## Kuvakaappaukset
+
+### Kirjautuminen
+
+![Kirjautuminen](<screenshots/Näyttökuva 2026-03-09 163322.png>)
+
+### Kirjautuneen etusivu
+
+![Kirjautuneen etusivu](<screenshots/Näyttökuva 2026-03-09 154407.png>)
+
+### Upload
+
+![Upload](<screenshots/Näyttökuva 2026-03-09 163255.png>)
+
+### Postin napit
+
+![Postin napit](<screenshots/Näyttökuva 2026-03-09 163231.png>)
+
+### Profiili
+
+![Profiili](<screenshots/Näyttökuva 2026-03-09 163307.png>)
+
+## Tietokantarakenne
+
+![Tietokannan rakenne](screenshots/database-structure.png)
+
+## API-linkit
+
+### auth-server
+
+APIn osoite: https://retrowave-backend.norwayeast.cloudapp.azure.com/auth-server/api/v1
+
+APIn dokumentaatio: https://retrowave-backend.norwayeast.cloudapp.azure.com/auth-server/
+
+### media-api
+
+APIn osoite: https://retrowave-backend.norwayeast.cloudapp.azure.com/media-api/api/v1
+
+APIn dokumentaatio: https://retrowave-backend.norwayeast.cloudapp.azure.com/media-api/
+
+### upload-server
+
+APIn osoite: https://retrowave-backend.norwayeast.cloudapp.azure.com/upload-server/api/v1
+
+APIn dokumentaatio: https://retrowave-backend.norwayeast.cloudapp.azure.com/upload-server/
+
+## Bugit ja ongelmat
+
+- useravatar ei toimi se on vain p tagi
+- people u follow on vaa kosmeettine atm ei valmis
+- search nappi ei toimi
+- posteja ei voi poistaa vain muokata
+- postien alla tagit eivät näy vaikka niillä on tagit
+- postien napit eivät ole kaikki ikoneita ja jaa samaa lookkia like napin kanssa
+- en ehtinyt siirtää likesien numeroa ikonin viereen
+- etusivu jäi tyhjäksi en ehtinyt laittaa popular tms posteja hero imagen alle
+- repost nappi ei toimi
+- etusivulle jäi testivaiheen tervetuloa viesti anonyymille käyttäjälle
+- kommentointi ei toimi oikein, yhden postin kommentti näkyy toisissakin posteissa
+- webbipalvelin ei osaa reitittää oikein minnekkään muualle kuin etusivulle
+
+## Tekoäly
+
+Tagit lisättiin frontendiin tekoälyn avustuksella. Tekoälyä käytettiin myös muihin pieniin korjauksiin, joista mainitaan commit-viesteissä tai koodissa.
+
+## Lähteet
+
+Logo ja sivuston nimi täältä
+https://www.textstudio.com/logo/retro-wave-font-1619
