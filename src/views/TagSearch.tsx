@@ -15,9 +15,10 @@ const TagSearch = () => {
   >(undefined);
 
   const {tags} = useTags();
+  const tag = tags.find((t) => t.tag_name === tagname);
   const {mediaArray, loading, error} = useMediaByTag(
     // TODO: Refactor this to use a dedicated endpoint for tag ID resolution instead of fetching all tags
-    tags.find((t) => t.tag_name === tagname)?.tag_id || 0,
+    tag?.tag_id || 0,
   );
 
   if (!tagname) {
