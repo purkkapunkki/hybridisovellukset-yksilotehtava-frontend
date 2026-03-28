@@ -128,13 +128,6 @@
   }
 }
 
-@font-face {
-  font-family: 'VCR';
-  src: url('fonts/VCR_OSD_MONO_1.001.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 @theme {
   --color-darkpurple: #14073d;
   --color-midpurple: #350d73;
@@ -143,5 +136,4 @@
   --color-lightpink: #ed6cc0;
   --color-xtralightpink: #fad5ed;
   --color-brightorange: #fda040;
-  --font-vcr: 'VCR', sans-serif;
 }

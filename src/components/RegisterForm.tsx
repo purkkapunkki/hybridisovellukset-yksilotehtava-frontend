@@ -75,7 +75,7 @@ const RegisterForm = () => {
 
   return (
     <>
-      <h2 className="font-vcr mt-4 text-center text-2xl font-semibold text-white">
+      <h2 className="mt-4 text-center text-2xl font-semibold text-white">
         Register
       </h2>
       <form

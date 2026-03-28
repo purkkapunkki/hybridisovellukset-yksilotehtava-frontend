@@ -3,6 +3,7 @@ import {useUserContext} from '../hooks/ContextHooks';
 import {useEffect} from 'react';
 import SearchBar from '../components/SearchBar';
 import Logo from '../images/RETROWAVELOGO.png';
+import {Button} from './ui/button';
 
 const Layout = () => {
   const {handleAutoLogin, user, loading} = useUserContext();
@@ -25,7 +26,7 @@ const Layout = () => {
             <img src={Logo} alt="RetroWaveLogo" className="h-20 w-100" />
           </Link>
 
-          <nav className="font-vcr text-white">
+          <nav className="text-white">
             <ul className="m-0 flex items-center justify-end gap-1 p-0">
               <SearchBar />
               <li>
@@ -73,6 +74,7 @@ const Layout = () => {
                   </Link>
                 </li>
               )}
+              <Button>FI|SVE</Button>
             </ul>
           </nav>
         </div>
