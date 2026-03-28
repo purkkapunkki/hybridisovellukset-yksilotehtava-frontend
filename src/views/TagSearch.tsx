@@ -24,7 +24,7 @@ const TagSearch = () => {
     return (
       <>
         <div className="from-midpurple to-darkermidpurple mt-20 mr-20 mb-20 ml-20 flex flex-col items-center rounded-md bg-linear-to-br p-2 text-white">
-          <h2 className="font-vcr">No tag selected</h2>
+          <h2>No tag selected</h2>
         </div>
         <Footer />
       </>
@@ -33,7 +33,7 @@ const TagSearch = () => {
 
   return (
     <>
-      <p className="font-vcr mb-2 ml-6 text-white">Media tagged "{tagname}"</p>
+      <p className="mb-2 ml-6 text-white">Media tagged "{tagname}"</p>
       {selectedItem && (
         <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />
       )}

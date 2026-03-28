@@ -77,9 +77,7 @@ const Upload = () => {
 
   return (
     <>
-      <h1 className="font-vcr text-center text-2xl font-semibold text-white">
-        Upload
-      </h1>
+      <h1 className="text-center text-2xl font-semibold text-white">Upload</h1>
       <form
         onSubmit={handleSubmit}
         className="bg-card text-card-foreground mx-auto mt-4 flex w-full max-w-2xl flex-col gap-4 rounded-md p-6 shadow"

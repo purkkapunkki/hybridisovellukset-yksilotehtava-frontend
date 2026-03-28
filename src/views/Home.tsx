@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <>
-      <p className="font-vcr mb-2 ml-6 text-white">Welcome, {user.username}!</p>
+      <p className="mb-2 ml-6 text-white">Welcome, {user.username}!</p>
       {selectedItem && (
         <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />
       )}
