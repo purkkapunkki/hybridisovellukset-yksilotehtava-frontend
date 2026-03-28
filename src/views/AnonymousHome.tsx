@@ -11,15 +11,15 @@ const AnomymousHome = () => {
         <section className="flex flex-col items-center">
           <img src={Logo} alt="RetroWaveLogo" className="h-20 w-100" />
           <h2 className="font-vcr">
-            Welcome to RETROWAVE, where you can post media from the 80's! Start
-            rewinding your nostalgia trip by{' '}
+            Tervetuloa (sivun nimi)! Täällä voit vaihtaa/myydä vanhat vaatteesi
+            muide taloyhtiösi asukkaiden kesken. Aloita sivun käyttäminen{' '}
             <Link
               className="hover:bg-accent hover:text-accent-foreground text-lightpink transition-all duration-500 ease-in-out"
               to="/login"
             >
-              registering
+              rekisteröitymällä
             </Link>{' '}
-            now!
+            nyt!
           </h2>
         </section>
       </div>
