@@ -1,6 +1,5 @@
 import {Route, BrowserRouter as Router, Routes} from 'react-router';
 import Layout from './components/Layout';
-import AnonymousHome from './views/AnonymousHome';
 import Home from './views/Home';
 import Profile from './views/Profile';
 import Upload from './views/Upload';
@@ -9,7 +8,9 @@ import Login from './views/Login';
 import Logout from './views/Logout';
 import TagSearch from './views/TagSearch';
 import {UserProvider} from './contexts/UserContext';
-import ProtectedRoute from './components/ProtectedRoute';
+import UserRoute from './components/UserRoute';
+import UsersPage from './views/UsersPage';
+import AdminRoute from './components/AdminRoute';
 
 const App = () => {
   return (
@@ -21,44 +22,57 @@ const App = () => {
               <Route
                 path="/"
                 element={
-                  <ProtectedRoute anonymousRoute={<AnonymousHome />}>
+                  // TODO: update the URL in the address bar when redirecting to login, currently it stays as "/"
+                  <UserRoute anonymousRoute={<Login />}>
                     <Home />
-                  </ProtectedRoute>
+                  </UserRoute>
                 }
               />
               <Route path="/" element={<Home />} />
               <Route
                 path="/profile"
                 element={
-                  <ProtectedRoute>
-                    <Profile />
-                  </ProtectedRoute>
+                  <UserRoute>
+                    <AdminRoute>
+                      <Profile />
+                    </AdminRoute>
+                  </UserRoute>
                 }
               />
               <Route
                 path="/upload"
                 element={
-                  <ProtectedRoute>
+                  <UserRoute>
                     <Upload />
-                  </ProtectedRoute>
+                  </UserRoute>
                 }
               />
               <Route path="/single" element={<Single />} />
               <Route path="/login" element={<Login />} />
               <Route
+                path="/users"
+                element={
+                  <UserRoute>
+                    <AdminRoute>
+                      <UsersPage />
+                    </AdminRoute>
+                  </UserRoute>
+                }
+              />
+              <Route
                 path="/tag/:tagname"
                 element={
-                  <ProtectedRoute>
+                  <UserRoute>
                     <TagSearch />
-                  </ProtectedRoute>
+                  </UserRoute>
                 }
               />
               <Route
                 path="/logout"
                 element={
-                  <ProtectedRoute>
+                  <UserRoute>
                     <Logout />
-                  </ProtectedRoute>
+                  </UserRoute>
                 }
               />
             </Route>

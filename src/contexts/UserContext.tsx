@@ -42,15 +42,20 @@ const UserProvider = ({children}: {children: React.ReactNode}) => {
       if (token) {
         const response = await getUserByToken(token);
         setUser(response.user);
+        const to =
+          (location.state as {to?: string} | undefined)?.to ||
+          location.pathname ||
+          '/';
+        console.log('login successful, navigating to', to);
+        navigate(to, {replace: true});
       }
     } catch (error) {
       console.log((error as Error).message);
       localStorage.removeItem('token');
     } finally {
       setLoading(true);
-      navigate(location.pathname || '/');
     }
-  }, [getUserByToken, location.pathname, navigate]);
+  }, [getUserByToken, location.pathname, location.state, navigate]);
 
   return (
     <UserContext.Provider

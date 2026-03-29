@@ -163,12 +163,17 @@ const useUser = () => {
     return fetchData<AvailableResponse>(`${resourceUrl}/email/${email}`);
   };
 
+  const getUsers = useCallback(async (): Promise<UserWithNoPassword[]> => {
+    return fetchData<UserWithNoPassword[]>(resourceUrl);
+  }, [resourceUrl]);
+
   return {
     postRegister,
     putUser,
     getUserByToken,
     getUsernameAvailable,
     getEmailAvailable,
+    getUsers,
   };
 };
 

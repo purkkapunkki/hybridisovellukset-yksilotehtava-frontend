@@ -3,35 +3,38 @@ import {useUser} from '../hooks/apiHooks';
 import useForm from '../hooks/formHooks';
 import type {RegisterCredentials} from '../types/LocalTypes';
 import {Button} from './ui/button';
-import {useUserContext} from '@/hooks/ContextHooks';
 
-const RegisterForm = () => {
+type Props = {onSuccess?: () => void};
+const RegisterForm = ({onSuccess}: Props) => {
   const {postRegister, getUsernameAvailable, getEmailAvailable} = useUser();
   const [usernameAvailable, setUsernameAvailable] = useState<boolean>(true);
   const [emailAvailable, setEmailAvailable] = useState<boolean>(true);
   const [registerError, setRegisterError] = useState<string>('');
-  const {handleLogin} = useUserContext();
 
   const initValues: RegisterCredentials = {
     username: '',
     password: '',
     email: '',
   };
-  const doRegister = async () => {
+
+  const doRegister = async (
+    values: RegisterCredentials,
+    setValues: React.Dispatch<React.SetStateAction<RegisterCredentials>>,
+  ) => {
     try {
-      // eslint-disable-next-line react-hooks/immutability
-      const userResponse = await getUsernameAvailable(inputs.username);
-      // check also useEffects below!
+      const userResponse = await getUsernameAvailable(values.username);
       setUsernameAvailable(userResponse.available);
-      const emailResponse = await getEmailAvailable(inputs.email);
+      const emailResponse = await getEmailAvailable(values.email);
       setEmailAvailable(emailResponse.available);
       if (userResponse.available && emailResponse.available) {
-        await postRegister(inputs as RegisterCredentials);
-        const credentials = {
-          username: inputs.username,
-          password: inputs.password,
-        };
-        handleLogin(credentials);
+        await postRegister(values);
+        setValues({
+          username: '',
+          password: '',
+          email: '',
+        });
+        setRegisterError('');
+        if (onSuccess) onSuccess();
       }
     } catch (error) {
       console.log((error as Error).message);
@@ -39,10 +42,8 @@ const RegisterForm = () => {
     }
   };
 
-  const {inputs, handleInputChange, handleSubmit} = useForm(
-    doRegister,
-    initValues,
-  );
+  const {inputs, handleInputChange, handleSubmit} =
+    useForm<RegisterCredentials>(doRegister, initValues);
 
   // option: check username & email availibilities based on state updates using useEffects
   useEffect(() => {
@@ -76,7 +77,7 @@ const RegisterForm = () => {
   return (
     <>
       <h2 className="mt-4 text-center text-2xl font-semibold text-white">
-        Register
+        Create user
       </h2>
       <form
         onSubmit={handleSubmit}
@@ -93,6 +94,7 @@ const RegisterForm = () => {
             id="loginusername"
             onChange={handleInputChange}
             autoComplete="username"
+            value={inputs.username}
           />
           {!usernameAvailable && (
             <p className="text-destructive text-sm">
@@ -111,6 +113,7 @@ const RegisterForm = () => {
             id="email"
             onChange={handleInputChange}
             autoComplete="email"
+            value={inputs.email}
           />
           {!emailAvailable && (
             <p className="text-destructive text-sm">
@@ -128,6 +131,7 @@ const RegisterForm = () => {
             type="password"
             id="password"
             onChange={handleInputChange}
+            value={inputs.password}
           />
           {registerError && (
             <p className="text-destructive text-sm">{registerError}</p>
@@ -138,7 +142,7 @@ const RegisterForm = () => {
           type="submit"
           // TODO: disable when form is not valid
         >
-          Register
+          Create user
         </Button>
       </form>
     </>

@@ -28,7 +28,10 @@ const Layout = () => {
 
           <nav className="text-white">
             <ul className="m-0 flex items-center justify-end gap-1 p-0">
+              {user && (
+                <>
               <SearchBar />
+
               <li>
                 <Link
                   className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
@@ -37,8 +40,7 @@ const Layout = () => {
                   Home
                 </Link>
               </li>
-              {user ? (
-                <>
+
                   <li>
                     <Link
                       className="text-lightpink hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
@@ -47,6 +49,9 @@ const Layout = () => {
                       Upload
                     </Link>
                   </li>
+
+                  {user.level_name === 'Admin' && (
+                    <>
                   <li>
                     <Link
                       className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
@@ -55,6 +60,18 @@ const Layout = () => {
                       Profile
                     </Link>
                   </li>
+
+                      <li>
+                        <Link
+                          className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
+                          to="/users"
+                        >
+                          Users
+                        </Link>
+                      </li>
+                    </>
+                  )}
+
                   <li>
                     <Link
                       className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
@@ -64,15 +81,6 @@ const Layout = () => {
                     </Link>
                   </li>
                 </>
-              ) : (
-                <li>
-                  <Link
-                    className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
-                    to="/login"
-                  >
-                    Login
-                  </Link>
-                </li>
               )}
               <Button>FI|SVE</Button>
             </ul>
