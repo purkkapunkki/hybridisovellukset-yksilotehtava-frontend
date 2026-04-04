@@ -16,7 +16,7 @@ const TagSearch = () => {
 
   const {tags} = useTags();
   const tagId = tags.find((t) => t.tag_name === tagname)?.tag_id;
-  const {mediaArray, loading, error} = useMediaByTag(tagId || 0);
+  const {mediaArray, setMediaArray, loading, error} = useMediaByTag(tagId || 0);
 
   if (!tagId) {
     return (
@@ -52,6 +52,7 @@ const TagSearch = () => {
                 key={item.media_id}
                 item={item}
                 setSelectedItem={setSelectedItem}
+                setMediaArray={setMediaArray}
               />
             ))
           )}

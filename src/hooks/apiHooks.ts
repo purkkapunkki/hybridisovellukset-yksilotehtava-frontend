@@ -4,6 +4,7 @@ import type {
   MediaItem,
   MediaItemWithOwner,
   Tag,
+  TagResult,
   UserWithNoPassword,
 } from 'hybrid-types/DBTypes';
 import {useCallback, useEffect, useState} from 'react';
@@ -87,7 +88,7 @@ const useMedia = () => {
     );
   };
 
-  return {mediaArray, postMedia};
+  return {mediaArray, setMediaArray, postMedia};
 };
 
 const useAuthentication = () => {
@@ -389,7 +390,55 @@ const useMediaByTag = (tag_id: number) => {
     }
   }, [tag_id]);
 
-  return {mediaArray, loading, error};
+  return {mediaArray, setMediaArray, loading, error};
+};
+
+const useTagsByMedia = (media_id: number) => {
+  const [tags, setTags] = useState<TagResult[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getTagsByMedia = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const tagsData = await fetchData<TagResult[]>(
+          import.meta.env.VITE_MEDIA_API + '/tags/bymedia/' + media_id,
+        );
+        setTags(tagsData);
+      } catch (err) {
+        console.error(err);
+        setError('Failed to load tags for this media');
+        setTags([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (media_id > 0) {
+      getTagsByMedia();
+    }
+  }, [media_id]);
+
+  return {tags, loading, error};
+};
+
+const useDeleteMedia = () => {
+  const deleteMedia = async (media_id: number, token: string) => {
+    const fetchOptions = {
+      method: 'DELETE',
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    };
+    return fetchData<MessageResponse>(
+      import.meta.env.VITE_MEDIA_API + '/media/' + media_id,
+      fetchOptions,
+    );
+  };
+
+  return {deleteMedia};
 };
 
 export {
@@ -401,4 +450,6 @@ export {
   useComment,
   useTags,
   useMediaByTag,
+  useTagsByMedia,
+  useDeleteMedia,
 };

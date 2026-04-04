@@ -14,7 +14,7 @@ const Home = () => {
   >(undefined);
 
   const {user} = useUserContext();
-  const {mediaArray} = useMedia();
+  const {mediaArray, setMediaArray} = useMedia();
 
   if (user === null) {
     return '';
@@ -40,6 +40,7 @@ const Home = () => {
               key={item.media_id}
               item={item}
               setSelectedItem={setSelectedItem}
+              setMediaArray={setMediaArray}
             />
           ))}
         </section>
