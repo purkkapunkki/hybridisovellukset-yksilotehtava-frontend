@@ -102,10 +102,18 @@ const Likes = ({item}: LikesType) => {
 
   return (
     <>
-      <Button variant="ghost" onClick={handleLike}>
-        {likeState.userLike ? <Heart fill="red" stroke="black" /> : <Heart />}
+      <Button
+        variant="ghost"
+        onClick={handleLike}
+        title="Tykkää tästä mediasta"
+        aria-label="Tykkää tästä mediasta"
+        className="cursor-pointer"
+      >
+        <Heart
+          {...(likeState.userLike ? {fill: 'red', stroke: 'black'} : {})}
+        />
+        <span>{likeState.count}</span>
       </Button>
-      <p>Likes: {likeState.count}</p>
     </>
   );
 };
