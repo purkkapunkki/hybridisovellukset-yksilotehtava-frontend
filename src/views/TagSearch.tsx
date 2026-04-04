@@ -15,16 +15,14 @@ const TagSearch = () => {
   >(undefined);
 
   const {tags} = useTags();
-  const {mediaArray, loading, error} = useMediaByTag(
-    // TODO: Refactor this to use a dedicated endpoint for tag ID resolution instead of fetching all tags
-    tags.find((t) => t.tag_name === tagname)?.tag_id || 0,
-  );
+  const tagId = tags.find((t) => t.tag_name === tagname)?.tag_id;
+  const {mediaArray, loading, error} = useMediaByTag(tagId || 0);
 
-  if (!tagname) {
+  if (!tagId) {
     return (
       <>
         <div className="from-midpurple to-darkermidpurple mt-20 mr-20 mb-20 ml-20 flex flex-col items-center rounded-md bg-linear-to-br p-2 text-white">
-          <h2>No tag selected</h2>
+          <h2>Tag not found</h2>
         </div>
         <Footer />
       </>
