@@ -11,6 +11,7 @@ import {UserProvider} from './contexts/UserContext';
 import UserRoute from './components/UserRoute';
 import UsersPage from './views/UsersPage';
 import AdminRoute from './components/AdminRoute';
+import './i18n';
 
 const App = () => {
   return (

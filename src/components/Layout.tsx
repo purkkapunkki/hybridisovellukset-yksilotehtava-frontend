@@ -3,7 +3,7 @@ import {useUserContext} from '../hooks/ContextHooks';
 import {useEffect} from 'react';
 import SearchBar from '../components/SearchBar';
 import Logo from '../images/RETROWAVELOGO.png';
-import {Button} from './ui/button';
+import LanguageSelector from './LanguageSelector';
 
 const Layout = () => {
   const {handleAutoLogin, user, loading} = useUserContext();
@@ -30,16 +30,16 @@ const Layout = () => {
             <ul className="m-0 flex items-center justify-end gap-1 p-0">
               {user && (
                 <>
-              <SearchBar />
+                  <SearchBar />
 
-              <li>
-                <Link
-                  className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
-                  to="/"
-                >
-                  Home
-                </Link>
-              </li>
+                  <li>
+                    <Link
+                      className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
+                      to="/"
+                    >
+                      Home
+                    </Link>
+                  </li>
 
                   <li>
                     <Link
@@ -52,14 +52,14 @@ const Layout = () => {
 
                   {user.level_name === 'Admin' && (
                     <>
-                  <li>
-                    <Link
-                      className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
-                      to="/profile"
-                    >
-                      Profile
-                    </Link>
-                  </li>
+                      <li>
+                        <Link
+                          className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
+                          to="/profile"
+                        >
+                          Profile
+                        </Link>
+                      </li>
 
                       <li>
                         <Link
@@ -82,7 +82,7 @@ const Layout = () => {
                   </li>
                 </>
               )}
-              <Button>FI|SVE</Button>
+              <LanguageSelector />
             </ul>
           </nav>
         </div>
