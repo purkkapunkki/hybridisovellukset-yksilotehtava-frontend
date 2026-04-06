@@ -20,5 +20,17 @@
   "hakusanat": "Søkeord, skill med komma",
   "tiedosto": "Fil",
   "tyhjennä": "Tøm",
-  "suositut tagit": "Populære søkeord"
+  "suositut tagit": "Populære søkeord",
+  "hakusanalla haku": "Søkeresultater for søkeord",
+  "hakuvirhe": "Ingen resultater funnet for søkeordet ditt, prøv et annet søkeord.",
+  "kirjautuminen": "Logg inn",
+  "käyttäjän": "Bruker",
+  "ilmoitus": "melding",
+  "luomispäivämäärä": "Opprettet",
+  "hakusanalistaus": "Søkeord",
+  "tietoa sovelluksesta": "Om applikasjonen",
+  "kysy isännöitsijältä": "Spør forvalteren din om brukernavn og passord for applikasjonen.",
+  "käyttöohjeet": "Bruksanvisning",
+  "yhteystiedot": "Kontaktinformasjon",
+  "tekninen tuki": "Teknisk støtte"
 }

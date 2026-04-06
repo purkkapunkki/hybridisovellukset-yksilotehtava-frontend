@@ -20,5 +20,17 @@
   "hakusanat": "Hakusanat, erota pilkulla",
   "tiedosto": "Tiedosto",
   "tyhjennä": "Tyhjennä",
-  "suositut tagit": "Suositut hakusanat"
+  "suositut tagit": "Suositut hakusanat",
+  "hakusanalla haku": "Hakutulokset hakusanalla",
+  "hakuvirhe": "Hakusanallasi ei löytynyt mitään, ole hyvä ja kokeile toista hakusanaa.",
+  "kirjautuminen": "Kirjaudu sisään",
+  "käyttäjän": "Käyttäjän",
+  "ilmoitus": "ilmoitus",
+  "luomispäivämäärä": "Luotu",
+  "hakusanalistaus": "Hakusanat",
+  "tietoa sovelluksesta": "Tietoa sovelluksesta",
+  "kysy isännöitsijältä": "Kysy isännöitsijältäsi käyttäjätunnus ja salasana sovellukseen.",
+  "käyttöohjeet": "Käyttöohjeet",
+  "yhteystiedot": "Yhteystiedot",
+  "tekninen tuki": "Tekninen tuki"
 }

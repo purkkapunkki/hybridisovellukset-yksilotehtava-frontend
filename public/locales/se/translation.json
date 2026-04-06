@@ -20,5 +20,17 @@
 "hakusanat": "Söktext, separera med komma",
 "tiedosto": "Fil",
 "tyhjennä": "Rensa",
-"suositut tagit": "Populära söktexter"
+"suositut tagit": "Populära söktexter",
+"hakusanalla haku": "Sökresultat för söktext",
+"hakuvirhe": "Inga resultat hittades för din söktext, vänligen försök med en annan söktext.",
+"kirjautuminen": "Logga in",
+"käyttäjän": "Användar",
+"ilmoitus": "meddelande",
+"luomispäivämäärä": "Skapad",
+"hakusanalistaus": "Söktexter",
+"tietoa sovelluksesta": "Om applikationen",
+"kysy isännöitsijältä": "Fråga din fastighetsförvaltare om användarnamn och lösenord för applikationen.",
+"käyttöohjeet": "Användarinstruktioner",
+"yhteystiedot": "Kontaktuppgifter",
+"tekninen tuki": "Teknisk support"
 }

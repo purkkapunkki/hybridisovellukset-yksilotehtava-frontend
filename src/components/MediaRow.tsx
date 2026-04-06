@@ -13,6 +13,7 @@ import {
 import Likes from './Likes';
 import {MessageCircle} from 'lucide-react';
 import DeletePost from './DeletePost';
+import {useTranslation} from 'react-i18next';
 
 interface MediaRowProps {
   item: MediaItemWithOwner;
@@ -21,6 +22,7 @@ interface MediaRowProps {
 }
 
 const MediaRow = (props: MediaRowProps) => {
+  const {t} = useTranslation();
   const {item, setSelectedItem, setMediaArray} = props;
   const {user} = useUserContext();
 
@@ -34,9 +36,13 @@ const MediaRow = (props: MediaRowProps) => {
     <Card className="mb-5 w-full overflow-hidden">
       <div className="relative p-4">
         <div className="absolute inset-0 z-10 bg-black/20 transition-colors hover:bg-black/0" />
-        <img className="pl-2" src="" alt="user-avatar" />
-        <h1 className="p-2 font-bold">User: {item.username}</h1>
-        <p>Posted at: {new Date(item.created_at).toLocaleString('fi-FI')}</p>
+        <h1 className="font-bold">
+          {t('käyttäjän')} {item.username} {t('ilmoitus')}
+        </h1>
+        <p>
+          {t('luomispäivämäärä')}:{' '}
+          {new Date(item.created_at).toLocaleString('fi-FI')}
+        </p>
         <img
           className="h-72 w-full rounded-md object-cover"
           src={item.thumbnail}
@@ -74,7 +80,7 @@ const MediaRow = (props: MediaRowProps) => {
             )}
 
           <p>
-            Tags:{' '}
+            {t('hakusanalistaus')}:{' '}
             {tagsLoading ? (
               <span>Loading tags...</span>
             ) : tagError ? (

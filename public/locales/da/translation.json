@@ -20,5 +20,17 @@
   "hakusanat": "Søgetekst, adskilt med komma",
   "tiedosto": "Fil",
   "tyhjennä": "Ryd",
-  "suositut tagit": "Populære søgetekster"
+  "suositut tagit": "Populære søgetekster",
+  "hakusanalla haku": "Søgeresultater for søgetekst",
+  "hakuvirhe": "Der blev ikke fundet noget for din søgetekst, prøv venligst en anden søgetekst.",
+  "kirjautuminen": "Log ind",
+  "käyttäjän": "Bruger",
+  "ilmoitus": "meddelelse",
+  "luomispäivämäärä": "Oprettet",
+  "hakusanalistaus": "Søgetekster",
+  "tietoa sovelluksesta": "Om applikationen",
+  "kysy isännöitsijältä": "Spørg din administrator om brugernavn og adgangskode til applikationen.",
+  "käyttöohjeet": "Brugsanvisning",
+  "yhteystiedot": "Kontaktinformation",
+  "tekninen tuki": "Teknisk support"
 }

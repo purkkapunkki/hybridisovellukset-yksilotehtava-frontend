@@ -3,8 +3,10 @@ import type {Credentials} from '../types/LocalTypes';
 import {useUserContext} from '../hooks/ContextHooks';
 import {Button} from './ui/button';
 import {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 
 const LoginForm = () => {
+  const {t} = useTranslation();
   const initValues: Credentials = {
     username: '',
     password: '',
@@ -29,14 +31,16 @@ const LoginForm = () => {
 
   return (
     <>
-      <h2 className="text-center text-2xl font-semibold text-white">Login</h2>
+      <h2 className="text-center text-2xl font-semibold">
+        {t('kirjautuminen')}
+      </h2>
       <form
         onSubmit={handleSubmit}
         className="bg-card text-card-foreground mx-auto mt-4 flex w-full max-w-md flex-col gap-4 rounded-md p-6 shadow"
       >
         <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="loginusername">
-            Username
+            {t('käyttäjänimi')}
           </label>
           <input
             className="border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-md border px-3 py-2 transition outline-none focus:ring-2"
@@ -49,7 +53,7 @@ const LoginForm = () => {
         </div>
         <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="loginpassword">
-            Password
+            {t('salasana')}
           </label>
           <input
             className="border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-md border px-3 py-2 transition outline-none focus:ring-2"
@@ -62,7 +66,7 @@ const LoginForm = () => {
         </div>
         {loginError && <p className="text-destructive text-sm">{loginError}</p>}
         <Button className="mt-2 w-full font-semibold" type="submit">
-          Login
+          {t('kirjautuminen')}
         </Button>
       </form>
     </>
