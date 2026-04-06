@@ -17,7 +17,7 @@ const Layout = () => {
 
   return (
     <div className="bg-white">
-      <header className="text-card-foreground from-darkpurple via-midpurple to-lightpink sticky top-0 z-10 mr-5 ml-5 rounded-md bg-linear-to-br from-65% via-75% to-100% shadow-sm">
+      <header className="text-card-foreground from-darkpurple to-darkermidpurple sticky top-0 z-10 mr-5 ml-5 rounded-md bg-linear-to-br from-65% via-75% to-100% shadow-sm">
         <div className="mx-auto mb-2 flex w-full max-w-6xl items-center justify-between px-4 py-2 sm:px-6">
           <Link
             className="block rounded px-2 py-2 text-center text-2xl font-bold transition-all duration-500 ease-in-out"
@@ -43,7 +43,7 @@ const Layout = () => {
 
                   <li>
                     <Link
-                      className="text-lightpink hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
+                      className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
                       to="/upload"
                     >
                       Upload
