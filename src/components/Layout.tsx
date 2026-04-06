@@ -2,7 +2,7 @@ import {Link, Outlet} from 'react-router';
 import {useUserContext} from '../hooks/ContextHooks';
 import {useEffect} from 'react';
 import SearchBar from '../components/SearchBar';
-import Logo from '../images/RETROWAVELOGO.png';
+import Logo from '../images/Logo.png';
 import LanguageSelector from './LanguageSelector';
 
 const Layout = () => {
@@ -23,7 +23,7 @@ const Layout = () => {
             className="block rounded px-2 py-2 text-center text-2xl font-bold transition-all duration-500 ease-in-out"
             to="/"
           >
-            <img src={Logo} alt="RetroWaveLogo" className="h-20 w-100" />
+            <img src={Logo} alt="RetroWaveLogo" className="h-20 w-50" />
           </Link>
 
           <nav className="text-white">
