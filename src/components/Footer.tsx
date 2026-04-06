@@ -1,5 +1,6 @@
 import {Link} from 'react-router';
 import {useTranslation} from 'react-i18next';
+import KorpiLogo from '../images/Korven-huolto-logo.png';
 
 const Footer = () => {
   const {t} = useTranslation();
@@ -14,7 +15,7 @@ const Footer = () => {
           <Link to="/">{t('tekninen tuki')}</Link>
         </section>
         <section>
-          <p>&#169;Huoltoyhtiön logo</p>
+          <img src={KorpiLogo} alt="Logo" className="ml-100 h-20 w-50" />
         </section>
       </div>
     </>
