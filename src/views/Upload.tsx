@@ -3,15 +3,18 @@ import useForm from '../hooks/formHooks';
 import {useFile, useMedia, useTags} from '../hooks/apiHooks';
 import {Button} from '../components/ui/button';
 import Footer from '@/components/Footer';
+import {useTranslation} from 'react-i18next';
 
 // helpers are implemented in utils/uploadHelpers.ts
 import {normalizeTagNames, validateForm} from '../utils/uploadHelpers';
 
 const Upload = () => {
+  const {t} = useTranslation();
+  const token = localStorage.getItem('token') || '';
   const [uploading, setUploading] = useState<boolean>(false);
   const [file, setFile] = useState<File | null>(null);
   const {postFile} = useFile();
-  const {postMedia} = useMedia();
+  const {postMedia} = useMedia(token);
   const {postTag} = useTags();
   const fileRef = useRef<HTMLInputElement | null>(null);
 
@@ -77,14 +80,14 @@ const Upload = () => {
 
   return (
     <>
-      <h1 className="text-center text-2xl font-semibold text-white">Upload</h1>
+      <h1 className="text-center text-2xl font-semibold">{t('lataa')}</h1>
       <form
         onSubmit={handleSubmit}
         className="bg-card text-card-foreground mx-auto mt-4 flex w-full max-w-2xl flex-col gap-4 rounded-md p-6 shadow"
       >
         <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="title">
-            Title
+            {t('otsikko')}
           </label>
           <input
             className="border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-md border px-3 py-2 transition outline-none focus:ring-2"
@@ -97,7 +100,7 @@ const Upload = () => {
         </div>
         <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="description">
-            Description
+            {t('kuvaus')}
           </label>
           <textarea
             className="border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-md border px-3 py-2 transition outline-none focus:ring-2"
@@ -110,7 +113,7 @@ const Upload = () => {
         </div>
         <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="tags">
-            Tags
+            {t('hakusanat')}
           </label>
           <input
             className="border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-md border px-3 py-2 transition outline-none focus:ring-2"
@@ -123,7 +126,7 @@ const Upload = () => {
         </div>
         <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="file">
-            File
+            {t('tiedosto')}
           </label>
           <input
             className="text-muted-foreground file:bg-primary file:text-primary-foreground hover:file:bg-primary/90 block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:px-4 file:py-2 file:font-semibold"
@@ -150,7 +153,7 @@ const Upload = () => {
           type="submit"
           disabled={!isFormValid()}
         >
-          Upload
+          {t('lataa')}
         </Button>
       </form>
       <div className="mx-auto mt-4 w-full max-w-2xl">
@@ -159,7 +162,7 @@ const Upload = () => {
           className="w-full font-semibold"
           onClick={resetForm}
         >
-          Reset
+          {t('tyhjennä')}
         </Button>
       </div>
 

@@ -7,8 +7,10 @@ import PopularTagsList from '../components/PopularTagsList';
 import Footer from '../components/Footer';
 import {useMedia} from '../hooks/apiHooks';
 import {useUserContext} from '@/hooks/ContextHooks';
+import {useTranslation} from 'react-i18next';
 
 const Home = () => {
+  const {t} = useTranslation();
   const token = localStorage.getItem('token') || '';
   const [selectedItem, setSelectedItem] = useState<
     MediaItemWithOwner | undefined
@@ -27,7 +29,9 @@ const Home = () => {
 
   return (
     <>
-      <p className="mb-2 ml-6 font-bold">Tervetuloa, {user.username}!</p>
+      <p className="mb-2 ml-6 text-xl font-bold">
+        {t('tervehdys')} {user.username}! {t('yhteisö')}: Korpisuo 6
+      </p>
       {selectedItem && (
         <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />
       )}

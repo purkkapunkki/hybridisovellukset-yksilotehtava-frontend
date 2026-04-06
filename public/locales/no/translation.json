@@ -1,3 +1,24 @@
 {
-  "kielivalinta": "Velg språk"
+  "kielivalinta": "Velg språk",
+  "tervehdys": "Velkommen, ",
+  "yhteisö": "Din fellesskap",
+  "etusivu": "Forsiden",
+  "lataa": "Laste opp",
+  "profiili": "Profil",
+  "käyttäjät": "Brukere",
+  "kirjaudu ulos": "Logg ut",
+  "haku": "Søk",
+  "hakusana": "Søkeord",
+  "käyttäjänimi": "Brukernavn",
+  "sähköposti": "E-post",
+  "salasana": "Passord",
+  "rekisteröi käyttäjä": "Registrer bruker",
+  "käyttäjänimi ei saatavilla": "Brukernavn ikke tilgjengelig",
+  "sähköposti ei saatavilla": "E-post ikke tilgjengelig",
+  "otsikko": "Tittel",
+  "kuvaus": "Beskrivelse",
+  "hakusanat": "Søkeord, skill med komma",
+  "tiedosto": "Fil",
+  "tyhjennä": "Tøm",
+  "suositut tagit": "Populære søkeord"
 }

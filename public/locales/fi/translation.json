@@ -1,3 +1,24 @@
 {
-  "kielivalinta": "Valitse kieli"
+  "kielivalinta": "Valitse kieli",
+  "tervehdys": "Tervetuloa, ",
+  "yhteisö": "Yhteisösi",
+  "etusivu": "Etusivu",
+  "lataa": "Lataa",
+  "profiili": "Profiili",
+  "käyttäjät": "Käyttäjät",
+  "kirjaudu ulos": "Kirjaudu ulos",
+  "haku": "Haku",
+  "hakusana": "Hakusana",
+  "käyttäjänimi": "Käyttäjänimi",
+  "sähköposti": "Sähköposti",
+  "salasana": "Salasana",
+  "rekisteröi käyttäjä": "Rekisteröi käyttäjä",
+  "käyttäjänimi ei saatavilla": "Käyttäjänimi ei saatavilla",
+  "sähköposti ei saatavilla": "Sähköposti ei saatavilla",
+  "otsikko": "Otsikko",
+  "kuvaus": "Kuvaus",
+  "hakusanat": "Hakusanat, erota pilkulla",
+  "tiedosto": "Tiedosto",
+  "tyhjennä": "Tyhjennä",
+  "suositut tagit": "Suositut hakusanat"
 }

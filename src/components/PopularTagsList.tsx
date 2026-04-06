@@ -1,11 +1,13 @@
 import {useTags} from '../hooks/apiHooks';
 import {useNavigate} from 'react-router';
+import {useTranslation} from 'react-i18next';
 
 interface PopularTagsListProps {
   currentTag?: string;
 }
 
 const PopularTagsList = ({currentTag}: PopularTagsListProps) => {
+  const {t} = useTranslation();
   const {tags, error} = useTags();
   const navigate = useNavigate();
 
@@ -15,7 +17,7 @@ const PopularTagsList = ({currentTag}: PopularTagsListProps) => {
 
   return (
     <article className="from-midpurple to-darkermidpurple flex flex-col items-center rounded-md bg-linear-to-br p-2 font-bold text-white">
-      <h1 className="text-xl">Popular tags:</h1>
+      <h1 className="text-xl">{t('suositut tagit')}</h1>
       {error ? (
         <p className="text-sm text-red-300">{error}</p>
       ) : (

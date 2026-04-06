@@ -4,8 +4,10 @@ import {useEffect} from 'react';
 import SearchBar from '../components/SearchBar';
 import Logo from '../images/Logo.png';
 import LanguageSelector from './LanguageSelector';
+import {useTranslation} from 'react-i18next';
 
 const Layout = () => {
+  const {t} = useTranslation();
   const {handleAutoLogin, user, loading} = useUserContext();
   useEffect(() => {
     handleAutoLogin();
@@ -23,7 +25,7 @@ const Layout = () => {
             className="block rounded px-2 py-2 text-center text-2xl font-bold transition-all duration-500 ease-in-out"
             to="/"
           >
-            <img src={Logo} alt="RetroWaveLogo" className="h-20 w-50" />
+            <img src={Logo} alt="Logo" className="h-20 w-50" />
           </Link>
 
           <nav className="text-white">
@@ -37,7 +39,7 @@ const Layout = () => {
                       className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
                       to="/"
                     >
-                      Home
+                      {t('etusivu')}
                     </Link>
                   </li>
 
@@ -46,7 +48,7 @@ const Layout = () => {
                       className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
                       to="/upload"
                     >
-                      Upload
+                      {t('lataa')}
                     </Link>
                   </li>
 
@@ -57,7 +59,7 @@ const Layout = () => {
                           className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
                           to="/profile"
                         >
-                          Profile
+                          {t('profiili')}
                         </Link>
                       </li>
 
@@ -66,7 +68,7 @@ const Layout = () => {
                           className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
                           to="/users"
                         >
-                          Users
+                          {t('käyttäjät')}
                         </Link>
                       </li>
                     </>
@@ -77,7 +79,7 @@ const Layout = () => {
                       className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
                       to="/logout"
                     >
-                      Logout
+                      {t('kirjaudu ulos')}
                     </Link>
                   </li>
                 </>

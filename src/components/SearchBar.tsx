@@ -1,8 +1,10 @@
 import {useState} from 'react';
 import Input from './ui/input';
 import {useNavigate} from 'react-router';
+import {useTranslation} from 'react-i18next';
 
 const SearchBar = () => {
+  const {t} = useTranslation();
   const [searchInput, setSearchInput] = useState('');
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ const SearchBar = () => {
     <div className="flex items-center justify-center">
       <form action={search} className="whitespace-nowrap">
         <Input
-          placeholder="Hae tageillä..."
+          placeholder={t('hakusana')}
           className="rounded-l-md"
           onChange={handleChange}
           value={searchInput}
@@ -31,9 +33,9 @@ const SearchBar = () => {
 
         <button
           type="submit"
-          className="bg-midpurple from-midpurple to-lightpink rounded-r-md px-4 py-2 text-white hover:bg-gradient-to-r focus:outline-none"
+          className="bg-midpurple from-midpurple to-lightpink cursor-pointer rounded-r-md px-4 py-2 text-white hover:bg-gradient-to-r focus:outline-none"
         >
-          Haku
+          {t('haku')}
         </button>
       </form>
     </div>

@@ -1,3 +1,24 @@
 {
-  "kielivalinta": "Veldu tungumál"
+  "kielivalinta": "Veldu tungumál",
+  "tervehdys": "Velkomin, ",
+  "yhteisö": "Samfélag þitt",
+  "etusivu": "Forsíða",
+  "lataa": "Hlaða upp",
+  "profiili": "Prófíll",
+  "käyttäjät": "Notendur",
+  "kirjaudu ulos": "Skrá út",
+  "haku": "Leita",
+  "hakusana": "Leitarorð",
+  "käyttäjänimi": "Notandanafn",
+  "sähköposti": "Netfang",
+  "salasana": "Lykilorð",
+  "rekisteröi käyttäjä": "Skrá notanda",
+  "käyttäjänimi ei saatavilla": "Notandanafn ekki í boði",
+  "sähköposti ei saatavilla": "Netfang ekki í boði",
+  "otsikko": "Titill",
+  "kuvaus": "Lýsing",
+  "hakusanat": "Leitarorð, aðskil með kommu",
+  "tiedosto": "Skrá",
+  "tyhjennä": "Hreinsa",
+  "suositut tagit": "Vinsæl leitarorð"
 }

@@ -1,11 +1,11 @@
 import {useTranslation} from 'react-i18next';
 
 const languages = [
-  {value: 'fi', text: 'suomi'},
-  {value: 'se', text: 'svenska'},
-  {value: 'is', text: 'íslenska'},
-  {value: 'no', text: 'norsk'},
-  {value: 'da', text: 'dansk'},
+  {value: 'fi', text: 'Suomi'},
+  {value: 'se', text: 'Svenska'},
+  {value: 'is', text: 'Íslenska'},
+  {value: 'no', text: 'Norsk'},
+  {value: 'da', text: 'Dansk'},
 ];
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
       <select value={i18n.language} onChange={handleChange}>
         {languages.map((item) => {
           return (
-            <option key={item.value} value={item.value}>
+            <option className="text-black" key={item.value} value={item.value}>
               {item.text}
             </option>
           );
