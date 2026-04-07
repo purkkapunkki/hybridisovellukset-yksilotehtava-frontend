@@ -39,7 +39,7 @@ const Layout = () => {
                       className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
                       to="/"
                     >
-                      {t('etusivu')}
+                      {t('frontpage')}
                     </Link>
                   </li>
 
@@ -48,7 +48,7 @@ const Layout = () => {
                       className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
                       to="/upload"
                     >
-                      {t('lataa')}
+                      {t('upload')}
                     </Link>
                   </li>
 
@@ -59,7 +59,7 @@ const Layout = () => {
                           className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
                           to="/profile"
                         >
-                          {t('profiili')}
+                          {t('profile')}
                         </Link>
                       </li>
 
@@ -68,7 +68,7 @@ const Layout = () => {
                           className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
                           to="/users"
                         >
-                          {t('käyttäjät')}
+                          {t('users')}
                         </Link>
                       </li>
                     </>
@@ -79,7 +79,7 @@ const Layout = () => {
                       className="hover:bg-accent hover:text-accent-foreground block rounded px-3 py-2 text-center font-bold transition-all duration-500 ease-in-out"
                       to="/logout"
                     >
-                      {t('kirjaudu ulos')}
+                      {t('logout')}
                     </Link>
                   </li>
                 </>

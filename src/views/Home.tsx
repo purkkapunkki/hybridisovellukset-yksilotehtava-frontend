@@ -30,7 +30,7 @@ const Home = () => {
   return (
     <>
       <p className="mb-2 ml-6 text-xl font-bold">
-        {t('tervehdys')} {user.username}! {t('yhteisö')}: Korpisuo 6
+        {t('greeting')} {user.username}! {t('community')}: Korpisuo 6
       </p>
       {selectedItem && (
         <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />

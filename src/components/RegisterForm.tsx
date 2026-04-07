@@ -79,7 +79,7 @@ const RegisterForm = ({onSuccess}: Props) => {
   return (
     <>
       <h2 className="mt-4 text-center text-2xl font-semibold">
-        {t('rekisteröi käyttäjä')}
+        {t('register user')}
       </h2>
       <form
         onSubmit={handleSubmit}
@@ -87,7 +87,7 @@ const RegisterForm = ({onSuccess}: Props) => {
       >
         <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="loginusername">
-            {t('käyttäjänimi')}
+            {t('username')}
           </label>
           <input
             className="border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-md border px-3 py-2 transition outline-none focus:ring-2"
@@ -100,13 +100,13 @@ const RegisterForm = ({onSuccess}: Props) => {
           />
           {!usernameAvailable && (
             <p className="text-destructive text-sm">
-              {t('käyttäjänimi ei saatavilla')}
+              {t('username not available')}
             </p>
           )}
         </div>
         <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="email">
-            {t('sähköposti')}
+            {t('email')}
           </label>
           <input
             className="border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-md border px-3 py-2 transition outline-none focus:ring-2"
@@ -119,13 +119,13 @@ const RegisterForm = ({onSuccess}: Props) => {
           />
           {!emailAvailable && (
             <p className="text-destructive text-sm">
-              {t('sähköposti ei saatavilla')}
+              {t('email not available')}
             </p>
           )}
         </div>
         <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="password">
-            {t('salasana')}
+            {t('password')}
           </label>
           <input
             className="border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-md border px-3 py-2 transition outline-none focus:ring-2"
@@ -144,7 +144,7 @@ const RegisterForm = ({onSuccess}: Props) => {
           type="submit"
           // TODO: disable when form is not valid
         >
-          {t('rekisteröi käyttäjä')}
+          {t('register user')}
         </Button>
       </form>
     </>

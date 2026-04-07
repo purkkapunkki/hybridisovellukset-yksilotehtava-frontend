@@ -37,11 +37,10 @@ const MediaRow = (props: MediaRowProps) => {
       <div className="relative p-4">
         <div className="absolute inset-0 z-10 bg-black/20 transition-colors hover:bg-black/0" />
         <h1 className="font-bold">
-          {t('käyttäjän')} {item.username} {t('ilmoitus')}
+          {t('user')} {item.username} {t('post')}
         </h1>
         <p>
-          {t('luomispäivämäärä')}:{' '}
-          {new Date(item.created_at).toLocaleString('fi-FI')}
+          {t('created at')}: {new Date(item.created_at).toLocaleString('fi-FI')}
         </p>
         <img
           className="h-72 w-full rounded-md object-cover"
@@ -80,7 +79,7 @@ const MediaRow = (props: MediaRowProps) => {
             )}
 
           <p>
-            {t('hakusanalistaus')}:{' '}
+            {t('search terms list')}:{' '}
             {tagsLoading ? (
               <span>Loading tags...</span>
             ) : tagError ? (

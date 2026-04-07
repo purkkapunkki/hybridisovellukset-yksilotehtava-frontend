@@ -24,7 +24,7 @@ const SearchBar = () => {
     <div className="flex items-center justify-center">
       <form action={search} className="whitespace-nowrap">
         <Input
-          placeholder={t('hakusana')}
+          placeholder={t('search term')}
           className="rounded-l-md"
           onChange={handleChange}
           value={searchInput}
@@ -35,7 +35,7 @@ const SearchBar = () => {
           type="submit"
           className="bg-midpurple from-midpurple to-lightpink cursor-pointer rounded-r-md px-4 py-2 text-white hover:bg-gradient-to-r focus:outline-none"
         >
-          {t('haku')}
+          {t('search')}
         </button>
       </form>
     </div>

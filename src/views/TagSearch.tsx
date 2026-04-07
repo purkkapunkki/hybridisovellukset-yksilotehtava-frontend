@@ -24,7 +24,7 @@ const TagSearch = () => {
     return (
       <>
         <div className="from-midpurple to-darkermidpurple mt-20 mr-20 mb-20 ml-20 flex flex-col items-center rounded-md bg-linear-to-br p-2 text-white">
-          <h2>{t('hakuvirhe')}</h2>
+          <h2>{t('search error')}</h2>
         </div>
         <Footer />
       </>
@@ -34,7 +34,7 @@ const TagSearch = () => {
   return (
     <>
       <p className="mb-2 ml-6 text-xl font-bold">
-        {t('hakusanalla haku')} "{tagname}"
+        {t('search by term')} "{tagname}"
       </p>
       {selectedItem && (
         <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />

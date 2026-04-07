@@ -31,16 +31,14 @@ const LoginForm = () => {
 
   return (
     <>
-      <h2 className="text-center text-2xl font-semibold">
-        {t('kirjautuminen')}
-      </h2>
+      <h2 className="text-center text-2xl font-semibold">{t('login')}</h2>
       <form
         onSubmit={handleSubmit}
         className="bg-card text-card-foreground mx-auto mt-4 flex w-full max-w-md flex-col gap-4 rounded-md p-6 shadow"
       >
         <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="loginusername">
-            {t('käyttäjänimi')}
+            {t('username')}
           </label>
           <input
             className="border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-md border px-3 py-2 transition outline-none focus:ring-2"
@@ -53,7 +51,7 @@ const LoginForm = () => {
         </div>
         <div className="flex flex-col gap-1">
           <label className="text-sm font-semibold" htmlFor="loginpassword">
-            {t('salasana')}
+            {t('password')}
           </label>
           <input
             className="border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-md border px-3 py-2 transition outline-none focus:ring-2"
@@ -66,7 +64,7 @@ const LoginForm = () => {
         </div>
         {loginError && <p className="text-destructive text-sm">{loginError}</p>}
         <Button className="mt-2 w-full font-semibold" type="submit">
-          {t('kirjautuminen')}
+          {t('login')}
         </Button>
       </form>
     </>

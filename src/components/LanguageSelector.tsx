@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <label>{t('kielivalinta')}</label>
+      <label>{t('language selection')}</label>
       <select value={i18n.language} onChange={handleChange}>
         {languages.map((item) => {
           return (

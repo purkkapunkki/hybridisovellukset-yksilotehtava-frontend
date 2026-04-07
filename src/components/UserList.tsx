@@ -6,16 +6,14 @@ const UserList = ({users}: {users: UserWithNoPassword[]}) => {
 
   return (
     <>
-      <h2 className="mt-4 text-center text-2xl font-semibold">
-        {t('käyttäjät')}
-      </h2>
+      <h2 className="mt-4 text-center text-2xl font-semibold">{t('users')}</h2>
 
       <section className="bg-card text-card-foreground mx-auto mt-4 flex w-full max-w-md flex-col gap-4 rounded-md p-6 shadow">
         <table className="table-auto">
           <thead>
             <tr>
-              <th>{t('käyttäjänimi')}</th>
-              <th>{t('sähköposti')}</th>
+              <th>{t('username')}</th>
+              <th>{t('email')}</th>
             </tr>
           </thead>
           <tbody>
