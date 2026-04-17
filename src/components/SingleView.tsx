@@ -41,7 +41,6 @@ const SingleView = (props: {
           )}
           <div className="p-4">
             <h3 className="text-center text-2xl">{item.title}</h3>
-            <p>Owner: {item.username}</p>
             <p className="max-w-full">{item.description}</p>
             <div className="border-input my-2 rounded-md border p-2">
               <p>

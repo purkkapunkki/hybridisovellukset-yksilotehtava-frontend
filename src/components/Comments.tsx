@@ -4,8 +4,10 @@ import useForm from '../hooks/formHooks';
 import {useCommentStore} from '../stores/commentStore';
 import {useComment} from '../hooks/apiHooks';
 import {Button} from './ui/button';
+import {useTranslation} from 'react-i18next';
 
 const Comments = ({mediaId}: {mediaId: number}) => {
+  const {t} = useTranslation();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const {comments, setComments} = useCommentStore();
   const {user} = useUserContext();
@@ -62,7 +64,7 @@ const Comments = ({mediaId}: {mediaId: number}) => {
 
   return (
     <>
-      <h3>Comments</h3>
+      <h3>{t('comments')}</h3>
 
       {comments.length > 0 ? (
         <ul>
@@ -74,7 +76,7 @@ const Comments = ({mediaId}: {mediaId: number}) => {
           ))}
         </ul>
       ) : (
-        <p>No comments yet.</p>
+        <p>{t('no comments yet')}</p>
       )}
 
       {user && (
@@ -84,7 +86,7 @@ const Comments = ({mediaId}: {mediaId: number}) => {
         >
           <div className="flex flex-col gap-1">
             <label className="text-sm font-semibold" htmlFor="title">
-              Write comment
+              {t('write a message')}
             </label>
             <input
               className="border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-md border px-3 py-2 transition outline-none focus:ring-2"
@@ -100,7 +102,7 @@ const Comments = ({mediaId}: {mediaId: number}) => {
             type="submit"
             disabled={inputs.comment_text.length > 0 ? false : true}
           >
-            Add comment
+            {t('add comment')}
           </Button>
         </form>
       )}

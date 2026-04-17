@@ -54,7 +54,7 @@ const Profile = () => {
       {user && (
         <article className="bg-card border-border w-full rounded-md border">
           <form className="p-4" onSubmit={handleSubmit}>
-            <h3 className="text-center text-2xl">Profile</h3>
+            <h3 className="text-center text-2xl">{t('profile')}:</h3>
             <fieldset
               className="border-input my-2 rounded-md border p-2"
               disabled={!formEnabled}
@@ -90,10 +90,10 @@ const Profile = () => {
                     setFormEnabled(!formEnabled);
                   }}
                 >
-                  Cancel
+                  {t('cancel')}
                 </Button>
                 <Button className="mt-2 w-full font-semibold" type="submit">
-                  Save
+                  {t('save')}
                 </Button>
               </>
             ) : (
@@ -104,7 +104,7 @@ const Profile = () => {
                   setFormEnabled(!formEnabled);
                 }}
               >
-                Edit
+                {t('edit')}
               </Button>
             )}
           </form>
