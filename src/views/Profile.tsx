@@ -6,8 +6,10 @@ import {useState} from 'react';
 import Input from '@/components/ui/input';
 import {useUser} from '@/hooks/apiHooks';
 import Footer from '@/components/Footer';
+import {useTranslation} from 'react-i18next';
 
 const Profile = () => {
+  const {t} = useTranslation();
   const {user} = useUserContext();
   const {putUser} = useUser();
   const [formEnabled, setFormEnabled] = useState(false);
@@ -58,7 +60,7 @@ const Profile = () => {
               disabled={!formEnabled}
             >
               <label>
-                Username:
+                {t('username')}:
                 <Input
                   name="username"
                   defaultValue={inputs.username}
@@ -66,7 +68,7 @@ const Profile = () => {
                 ></Input>
               </label>
               <label>
-                Email:
+                {t('email')}:
                 <Input
                   name="email"
                   type="email"
@@ -75,7 +77,6 @@ const Profile = () => {
                 ></Input>
               </label>
             </fieldset>
-            <p>AVATAR</p>
             {editError && (
               <p className="text-destructive text-sm">{editError}</p>
             )}
