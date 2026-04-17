@@ -5,10 +5,11 @@
   "add post": "Lägg till inlägg",
   "cancel": "Avbryt",
   "clear": "Rensa",
+  "comments": "Kommentarer",
   "contact administrator": "Fråga din fastighetsförvaltare om användarnamn och lösenord för applikationen.",
   "contact info": "Kontaktuppgifter",
   "contact info description": "Kontakta oss när du behöver användarnamn och lösenord för applikationen.",
-  "created at": "Skapad",
+  "created at": "skapad",
   "delete post": "Ta bort",
   "description": "Beskrivning",
   "edit": "Redigera",
@@ -38,7 +39,6 @@
   "technical support": "Teknisk support",
   "technical support description": "Kontakta oss när du behöver hjälp med att komma igång med applikationen eller har frågor om applikationen.",
   "title": "Titel",
-  "uploaded at": "",
   "user instructions": "Användarinstruktioner",
   "user instructions description 1": "Kirva är en app som Korpis fastighetsskötsel erbjuder åt er bostadsrättsförening, där boende kan sälja, byta eller skänka gamla kläder. Observera att köpare och säljare är fullt ansvariga för att förhandla, ordna och slutföra eventuella byten eller försäljningar; appen tillhandahåller endast en annonsplattform och agerar inte som mellanhand eller garanterar transaktioner.",
   "user instructions description 2": "Kontakta först din förvaltare för att få användarnamn och lösenord. Du kan göra det genom att klicka <2>här</2>. Därefter kan du logga in i appen och skapa en annons för ditt plagg. Gör så här:",
@@ -48,5 +48,7 @@
   "user's post": "Användaren {{username}}s meddelande",
   "username": "Användarnamn",
   "username not available": "Användarnamn inte tillgängligt",
-  "users": "Användare"
+  "users": "Användare",
+  "write a comment": "Skriv en kommentar",
+  "no comments yet": "Inga kommentarer än så länge"
 }

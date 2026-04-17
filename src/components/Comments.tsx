@@ -86,7 +86,7 @@ const Comments = ({mediaId}: {mediaId: number}) => {
         >
           <div className="flex flex-col gap-1">
             <label className="text-sm font-semibold" htmlFor="title">
-              {t('write a message')}
+              {t('write a comment')}
             </label>
             <input
               className="border-input bg-background text-foreground focus:border-ring focus:ring-ring rounded-md border px-3 py-2 transition outline-none focus:ring-2"

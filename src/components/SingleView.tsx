@@ -2,13 +2,14 @@ import type {MediaItemWithOwner} from 'hybrid-types/DBTypes';
 import Comments from './Comments';
 import {Button} from './ui/button';
 import {X} from 'lucide-react';
-import {Trans} from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 
 const SingleView = (props: {
   item: MediaItemWithOwner | undefined;
   setSelectedItem: (item: MediaItemWithOwner | undefined) => void;
 }) => {
   const {item, setSelectedItem} = props;
+  const {t} = useTranslation();
   return (
     <dialog
       open
@@ -44,11 +45,8 @@ const SingleView = (props: {
             <p className="max-w-full">{item.description}</p>
             <div className="border-input my-2 rounded-md border p-2">
               <p>
-                <Trans i18nKey="uploaded at">
-                  Uploaded at{' '}
-                  {new Date(item.created_at).toLocaleString('fi-FI')} by user{' '}
-                  {item.username}
-                </Trans>
+                {t("user's post", {username: item.username})}, {t('created at')}
+                : {new Date(item.created_at).toLocaleString('fi-FI')}
               </p>
             </div>
 

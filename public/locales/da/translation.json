@@ -5,10 +5,11 @@
   "add post": "Tilføj opslag",
   "cancel": "Annuller",
   "clear": "Ryd",
+  "comments": "Kommentarer",
   "contact administrator": "Spørg din administrator om brugernavn og adgangskode til applikationen.",
   "contact info": "Kontaktinformation",
   "contact info description": "",
-  "created at": "Oprettet",
+  "created at": "oprettet den",
   "delete post": "Slet",
   "description": "Beskrivelse",
   "edit": "Rediger",
@@ -38,7 +39,6 @@
   "technical support": "Teknisk support",
   "technical support description": "Kontakt os, hvis du har brug for hjælp til at sætte applikationen op eller har spørgsmål om applikationen.",
   "title": "Titel",
-  "uploaded at": "",
   "user instructions": "Brugsanvisning",
   "user instructions description 1": "Kirva er en app, som Korpis vedligeholdelsesfirma stiller til rådighed for jeres andels-/boligforening, hvor beboere kan sælge, bytte eller forære gamle tøj væk. Bemærk, at købere og sælgere er fuldt ansvarlige for at forhandle, arrangere og gennemføre eventuelle bytter eller salg; appen fungerer kun som en annonceplatform og fungerer ikke som mellemmand eller garanterer transaktioner.",
   "user instructions description 2": "Kontakt først jeres administrator for at få brugernavn og adgangskode. Du kan gøre dette ved at klikke <2>her</2>. Derefter kan du logge ind i appen og oprette en annonce for dit tøjstykke. Gør følgende:",
@@ -48,5 +48,7 @@
   "user's post": "Bruger {{username}}s meddelelse",
   "username": "Brugernavn",
   "username not available": "Brugernavn ikke tilgængeligt",
-  "users": "Brugere"
+  "users": "Brugere",
+  "write a comment": "Skriv en kommentar",
+  "no comments yet": "Ingen kommentarer endnu"
 }

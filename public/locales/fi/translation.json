@@ -5,10 +5,11 @@
   "add post": "Lisää ilmoitus",
   "cancel": "Peruuta",
   "clear": "Tyhjennä",
+  "comments": "Kommentit",
   "contact administrator": "Kysy isännöitsijältäsi käyttäjätunnus ja salasana sovellukseen klikkaamalla yhteystietoja.",
   "contact info": "Yhteystiedot",
   "contact info description": "Ota yhteyttä kun tarvitset sovellukseen käyttäjätunnukset ja salasanan.",
-  "created at": "Luotu",
+  "created at": "luotu",
   "delete post": "Poista",
   "description": "Kuvaus",
   "edit": "Muokkaa",
@@ -38,7 +39,6 @@
   "technical support": "Tekninen tuki",
   "technical support description": "Ota yhteyttä kun tarvitset apua sovelluksen käyttöönoton kanssa tai sinulla on kysyttävää sovelluksesta.",
   "title": "Otsikko",
-  "uploaded at": "Uploaded at <2></2> by user <5></5>",
   "user instructions": "Käyttöohjeet",
   "user instructions description 1": "Kirva on Korven huoltoyhtiön taloyhtiöllenne tarjoama sovellus, jonka kautta voi myydä, vaihtaa tai lahjoittaa vanhoja vaatteita. Huomioithan, että ostajat ja myyjät ovat täysimääräisesti vastuussa vaihtojen ja myyntien neuvottelemisesta, järjestämisestä ja toteuttamisesta; sovellus tarjoaa ainoastaan ilmoitusalustan eikä toimi välikätenä tai takaa kauppoja.",
   "user instructions description 2": "Ota ensin yhteyttä isännöitsijään, jotta saat käyttöösi käyttäjätunnuksen ja salasanan. Voit tehdä sen klikkaamalla <2>tästä</2>. Tämän jälkeen voit kirjautua sovellukseen ja luoda ilmoituksen vaatteestasi. Teet sen seuraavasti:",
@@ -48,5 +48,7 @@
   "user's post": "Käyttäjän {{username}} ilmoitus",
   "username": "Käyttäjänimi",
   "username not available": "Käyttäjänimi ei saatavilla",
-  "users": "Käyttäjät"
+  "users": "Käyttäjät",
+  "write a comment": "Kirjoita kommentti",
+  "no comments yet": "Ei kommentteja vielä"
 }

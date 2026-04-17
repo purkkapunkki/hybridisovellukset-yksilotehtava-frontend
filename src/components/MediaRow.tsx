@@ -68,7 +68,7 @@ const MediaRow = (props: MediaRowProps) => {
             className="gap-x[0.5rem] cursor-pointer"
           >
             <MessageCircle />
-            <span>{t('add message')}</span>
+            <span>{t('add comment')}</span>
           </Button>
 
           {/* User exists and owns the media item or is an admin */}

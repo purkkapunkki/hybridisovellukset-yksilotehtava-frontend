@@ -5,10 +5,11 @@
   "add post": "Legg til innlegg",
   "cancel": "Avbryt",
   "clear": "Tøm",
+  "comments": "Kommentarer",
   "contact administrator": "Spør forvalteren din om brukernavn og passord for applikasjonen.",
   "contact info": "Kontaktinformasjon",
   "contact info description": "Ta kontakt når du trenger brukernavn og passord for applikasjonen.",
-  "created at": "Opprettet",
+  "created at": "oprettet den",
   "delete post": "Slett",
   "description": "Beskrivelse",
   "edit": "Rediger",
@@ -38,7 +39,6 @@
   "technical support": "Teknisk støtte",
   "technical support description": "Ta kontakt når du trenger hjelp med å sette opp applikasjonen eller har spørsmål om applikasjonen.",
   "title": "Tittel",
-  "uploaded at": "",
   "user instructions": "Bruksanvisning",
   "user instructions description 1": "Kirva er en app Korps vedlikeholdsfirma tilbyr deres borettslag/blokk, som lar beboere selge, bytte eller gi bort gamle klær. Vennligst merk at kjøpere og selgere er fullt ansvarlige for å forhandle, ordne og gjennomføre eventuelle bytter eller salg; appen fungerer kun som en annonsplattform og er ikke en mellommann eller garanterer transaksjoner.",
   "user instructions description 2": "Kontakt først din forvalter for å få brukernavn og passord. Du kan gjøre dette ved å klikke <2>her</2>. Etter det kan du logge inn i appen og opprette en annonse for plagget ditt. Gjør følgende:",
@@ -48,5 +48,7 @@
   "user's post": "Bruker {{username}}s melding",
   "username": "Brukernavn",
   "username not available": "Brukernavn ikke tilgjengelig",
-  "users": "Brukere"
+  "users": "Brukere",
+  "write a comment": "Skriv en kommentar",
+  "no comments yet": "Ingen kommentarer ennå"
 }

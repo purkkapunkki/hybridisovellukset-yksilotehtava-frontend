@@ -5,10 +5,11 @@
   "add post": "Bæta við færslu",
   "cancel": "Hætta við",
   "clear": "Hreinsa",
+  "comments": "Kommentarar",
   "contact administrator": "Spyrðu húsvörðinn um notandanafn og lykilorð fyrir forritið.",
   "contact info": "Hafa samband",
   "contact info description": "Hafðu samband þegar þú þarft notandanafn og lykilorð fyrir forritið.",
-  "created at": "Búið til",
+  "created at": "búið til",
   "delete post": "Eyða",
   "description": "Lýsing",
   "edit": "Redigera",
@@ -38,7 +39,6 @@
   "technical support": "Tæknilegur stuðningur",
   "technical support description": "Hafðu samband þegar þú þarft aðstoð við að setja upp forritið eða ef þú hefur spurningar um forritið.",
   "title": "Titill",
-  "uploaded at": "",
   "user instructions": "Notkunarleiðbeiningar",
   "user instructions description 1": "Kirva er forrit sem viðhaldssýsla Korpi býður eignarfélaginu ykkar, þar sem íbúar geta selt, skipt eða gefið frá sér gamlar úrklæðnur. Vinsamlegast athugið að kaupendur og seljendur bera fullt ábyrgð á samningaviðræðum, skipulagningu og framkvæmd hvers konar skipta eða sölu; forritið einungis veitir auglýsingaumhverfi og tekur ekki að sér milliliðahlutverk né ábyrgðir fyrir viðskiptum.",
   "user instructions description 2": "Hafðu fyrst samband við fasteignastjóra þinn til að fá notandanafn og lykilorð. Þú getur gert það með því að smella <2>hér</2>. Eftir það geturðu skráð þig inn í forritið og búið til auglýsingu fyrir flíkina þína. Gerðu eftirfarandi:",
@@ -48,5 +48,7 @@
   "user's post": "Notandan {{username}}s tilkynning",
   "username": "Notandanafn",
   "username not available": "Notandanafn ekki í boði",
-  "users": "Notendur"
+  "users": "Notendur",
+  "write a comment": "Skrifa athugasemd",
+  "no comments yet": "Engar athugasemdir ennþá"
 }
