@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <label>{t('language selection')}</label>
-      <select value={i18n.language} onChange={handleChange}>
+      <select value={i18n.language} onChange={handleChange} className="ml-1.5">
         {languages.map((item) => {
           return (
             <option className="text-black" key={item.value} value={item.value}>

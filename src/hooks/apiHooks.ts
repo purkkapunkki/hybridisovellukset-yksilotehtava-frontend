@@ -23,14 +23,22 @@ import type {
   UserResponse,
 } from 'hybrid-types/MessageTypes';
 
-const useMedia = () => {
+const useMedia = (token: string) => {
   const [mediaArray, setMediaArray] = useState<MediaItemWithOwner[]>([]);
 
   useEffect(() => {
     const getMedia = async () => {
       try {
+        const options = {
+          method: 'GET',
+          headers: {
+            Authorization: 'Bearer ' + token,
+            'Content-Type': 'application/json',
+          },
+        };
         const media = await fetchData<MediaItem[]>(
           import.meta.env.VITE_MEDIA_API + '/media',
+          options,
         );
         const mediaWithOwners = await Promise.all<MediaItemWithOwner>(
           media.map(async (item) => {
@@ -297,18 +305,26 @@ const useComment = () => {
   return {postComment, getCommentsByMediaId};
 };
 
-const useTags = () => {
+const useTags = (token: string) => {
   const [tags, setTags] = useState<Tag[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const getTags = async () => {
+    const getTags = async (token: string) => {
       try {
         setLoading(true);
         setError(null);
+        const fetchOptions = {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        };
         const tagsData = await fetchData<Tag[]>(
           import.meta.env.VITE_MEDIA_API + '/tags',
+          fetchOptions,
         );
         setTags(tagsData);
       } catch (err) {
@@ -320,8 +336,8 @@ const useTags = () => {
       }
     };
 
-    getTags();
-  }, []);
+    getTags(token);
+  }, [token]);
 
   const postTag = async (tagName: string, mediaId: number, token: string) => {
     const fetchOptions = {

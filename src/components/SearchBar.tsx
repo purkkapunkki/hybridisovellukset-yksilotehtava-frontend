@@ -33,7 +33,7 @@ const SearchBar = () => {
 
         <button
           type="submit"
-          className="bg-midpurple from-midpurple to-lightpink cursor-pointer rounded-r-md px-4 py-2 text-white hover:bg-gradient-to-r focus:outline-none"
+          className="bg-midgreen from-midgreen to-lightgreen cursor-pointer rounded-r-md px-4 py-2 text-white hover:bg-gradient-to-r focus:outline-none"
         >
           {t('search')}
         </button>

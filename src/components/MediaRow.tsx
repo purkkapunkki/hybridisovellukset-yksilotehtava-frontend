@@ -35,9 +35,9 @@ const MediaRow = (props: MediaRowProps) => {
   return (
     <Card className="mb-5 w-full overflow-hidden">
       <div className="relative p-4">
-        <div className="absolute inset-0 z-10 bg-black/20 transition-colors hover:bg-black/0" />
+        <div className="absolute inset-0 bg-black/20 transition-colors hover:bg-black/0" />
         <h1 className="font-bold">
-          {t('user')} {item.username} {t('post')}
+          {t("user's post", {username: item.username})}
         </h1>
         <p>
           {t('created at')}: {new Date(item.created_at).toLocaleString('fi-FI')}
@@ -65,8 +65,10 @@ const MediaRow = (props: MediaRowProps) => {
             onClick={() => {
               setSelectedItem(item);
             }}
+            className="gap-x[0.5rem] cursor-pointer"
           >
             <MessageCircle />
+            <span>{t('add comment')}</span>
           </Button>
 
           {/* User exists and owns the media item or is an admin */}

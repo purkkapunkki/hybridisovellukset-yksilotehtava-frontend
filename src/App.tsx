@@ -12,6 +12,9 @@ import UserRoute from './components/UserRoute';
 import UsersPage from './views/UsersPage';
 import AdminRoute from './components/AdminRoute';
 import './i18n';
+import UserInstructions from './views/UserInstructions';
+import ContactInfo from './views/ContactInfo';
+import TechnicalSupport from './views/TechnicalSupport';
 
 const App = () => {
   return (
@@ -73,6 +76,30 @@ const App = () => {
                 element={
                   <UserRoute>
                     <Logout />
+                  </UserRoute>
+                }
+              />
+              <Route
+                path="/userinstructions"
+                element={
+                  <UserRoute>
+                    <UserInstructions />
+                  </UserRoute>
+                }
+              />
+              <Route
+                path="/contactinfo"
+                element={
+                  <UserRoute>
+                    <ContactInfo />
+                  </UserRoute>
+                }
+              />
+              <Route
+                path="/technicalsupport"
+                element={
+                  <UserRoute>
+                    <TechnicalSupport />
                   </UserRoute>
                 }
               />

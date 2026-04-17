@@ -7,6 +7,7 @@ import {useTranslation} from 'react-i18next';
 
 // helpers are implemented in utils/uploadHelpers.ts
 import {normalizeTagNames, validateForm} from '../utils/uploadHelpers';
+import FileInput from '@/components/ui/FileInput';
 
 const Upload = () => {
   const {t} = useTranslation();
@@ -15,7 +16,7 @@ const Upload = () => {
   const [file, setFile] = useState<File | null>(null);
   const {postFile} = useFile();
   const {postMedia} = useMedia(token);
-  const {postTag} = useTags();
+  const {postTag} = useTags(token);
   const fileRef = useRef<HTMLInputElement | null>(null);
 
   const initValues = {title: '', description: '', tags: ''};
@@ -80,7 +81,7 @@ const Upload = () => {
 
   return (
     <>
-      <h1 className="text-center text-2xl font-semibold">{t('upload')}</h1>
+      <h1 className="text-center text-2xl font-semibold">{t('add post')}</h1>
       <form
         onSubmit={handleSubmit}
         className="bg-card text-card-foreground mx-auto mt-4 flex w-full max-w-2xl flex-col gap-4 rounded-md p-6 shadow"
@@ -128,22 +129,14 @@ const Upload = () => {
           <label className="text-sm font-semibold" htmlFor="file">
             {t('file')}
           </label>
-          <input
-            className="text-muted-foreground file:bg-primary file:text-primary-foreground hover:file:bg-primary/90 block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:px-4 file:py-2 file:font-semibold"
-            name="file"
-            type="file"
-            id="file"
-            accept="image/*, video/*"
-            onChange={handleFileChange}
-            ref={fileRef}
-          />
+          <FileInput file={file} onFileChange={handleFileChange} />
         </div>
         <img
           className="mx-auto h-48 w-48 rounded-md object-cover"
           src={
             file
               ? URL.createObjectURL(file)
-              : 'https://placehold.co/320x240?text=Choose+image'
+              : `https://placehold.co/320x240?text=${t('select file')}`
           }
           alt="preview"
           width="200"
@@ -153,7 +146,7 @@ const Upload = () => {
           type="submit"
           disabled={!isFormValid()}
         >
-          {t('upload')}
+          {t('add post')}
         </Button>
       </form>
       <div className="mx-auto mt-4 w-full max-w-2xl">

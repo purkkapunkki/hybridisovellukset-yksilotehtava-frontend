@@ -3,6 +3,7 @@ import {Trash2} from 'lucide-react';
 import {useDeleteMedia} from '../hooks/apiHooks';
 import {useUserContext} from '@/hooks/ContextHooks';
 import type {MediaItemWithOwner} from 'hybrid-types/DBTypes';
+import {useTranslation} from 'react-i18next';
 
 interface DeletePostProps {
   mediaId: number;
@@ -11,6 +12,7 @@ interface DeletePostProps {
 const DeletePost = ({mediaId, setMediaArray}: DeletePostProps) => {
   const {user} = useUserContext();
   const {deleteMedia} = useDeleteMedia();
+  const {t} = useTranslation();
 
   const handleDelete = () => {
     const token = localStorage.getItem('token');
@@ -25,14 +27,9 @@ const DeletePost = ({mediaId, setMediaArray}: DeletePostProps) => {
 
   return (
     <>
-      <Button
-        variant="ghost"
-        onClick={handleDelete}
-        title="Delete"
-        aria-label="Poista posti"
-        className="cursor-pointer"
-      >
+      <Button variant="ghost" onClick={handleDelete} className="cursor-pointer">
         <Trash2 />
+        <span>{t('delete post')}</span>
       </Button>
       <dialog>
         <p>Oletko varma että haluat poistaa tämän postin?</p>

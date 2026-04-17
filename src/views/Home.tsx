@@ -2,7 +2,7 @@ import type {MediaItemWithOwner} from 'hybrid-types/DBTypes';
 import {useState} from 'react';
 import MediaRow from '../components/MediaRow';
 import SingleView from '../components/SingleView';
-import FollowedList from '../components/NewPostsList';
+import NewPostsList from '../components/NewPostsList';
 import PopularTagsList from '../components/PopularTagsList';
 import Footer from '../components/Footer';
 import {useMedia} from '../hooks/apiHooks';
@@ -30,7 +30,10 @@ const Home = () => {
   return (
     <>
       <p className="mb-2 ml-6 text-xl font-bold">
-        {t('greeting')} {user.username}! {t('community')}: Korpisuo 6
+        {t('greeting', {
+          username: user.username,
+          community: user.community_name,
+        })}
       </p>
       {selectedItem && (
         <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />
@@ -40,17 +43,23 @@ const Home = () => {
           <PopularTagsList />
         </section>
         <section className="flex-1">
-          {ownersMedia.map((item) => (
-            <MediaRow
-              key={item.media_id}
-              item={item}
-              setSelectedItem={setSelectedItem}
-              setMediaArray={setMediaArray}
-            />
-          ))}
+          {ownersMedia.length > 0 ? (
+            ownersMedia.map((item) => (
+              <MediaRow
+                key={item.media_id}
+                item={item}
+                setSelectedItem={setSelectedItem}
+                setMediaArray={setMediaArray}
+              />
+            ))
+          ) : (
+            <p className="from-midgreen to-darkermidgreen mr-5 ml-5 flex flex-col items-center rounded-md bg-linear-to-br pt-5 pr-10 pb-5 pl-10 text-white">
+              {t('no user posts')}
+            </p>
+          )}
         </section>
         <section className="flex-1">
-          <FollowedList />
+          <NewPostsList setSelectedItem={setSelectedItem} />
         </section>
       </div>
       <Footer />

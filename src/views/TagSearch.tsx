@@ -16,14 +16,15 @@ const TagSearch = () => {
     MediaItemWithOwner | undefined
   >(undefined);
 
-  const {tags} = useTags();
+  const token = localStorage.getItem('token') || '';
+  const {tags} = useTags(token);
   const tagId = tags.find((t) => t.tag_name === tagname)?.tag_id;
   const {mediaArray, setMediaArray, loading, error} = useMediaByTag(tagId || 0);
 
   if (!tagId) {
     return (
       <>
-        <div className="from-midpurple to-darkermidpurple mt-20 mr-20 mb-20 ml-20 flex flex-col items-center rounded-md bg-linear-to-br p-2 text-white">
+        <div className="from-midgreen to-darkermidgreen mt-20 mr-20 mb-20 ml-20 flex flex-col items-center rounded-md bg-linear-to-br p-2 text-white">
           <h2>{t('search error')}</h2>
         </div>
         <Footer />
@@ -34,7 +35,7 @@ const TagSearch = () => {
   return (
     <>
       <p className="mb-2 ml-6 text-xl font-bold">
-        {t('search by term')} "{tagname}"
+        {t('search by term', {searchTerm: tagname})}
       </p>
       {selectedItem && (
         <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />
@@ -49,7 +50,9 @@ const TagSearch = () => {
           ) : error ? (
             <p className="text-red-300">{error}</p>
           ) : mediaArray.length === 0 ? (
-            <p className="text-white">No media found for this tag</p>
+            <p className="from-midgreen to-darkermidgreen mr-5 ml-5 flex flex-col items-center rounded-md bg-linear-to-br pt-5 pr-10 pb-5 pl-10 text-white">
+              {t('search error')}
+            </p>
           ) : (
             mediaArray.map((item) => (
               <MediaRow
@@ -62,7 +65,7 @@ const TagSearch = () => {
           )}
         </section>
         <section className="flex-1">
-          <FollowedList />
+          <FollowedList setSelectedItem={setSelectedItem} />
         </section>
       </div>
       <Footer />

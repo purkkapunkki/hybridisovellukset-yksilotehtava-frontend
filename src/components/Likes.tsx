@@ -3,6 +3,7 @@ import type {Like, MediaItemWithOwner} from 'hybrid-types/DBTypes';
 import {useLike} from '../hooks/apiHooks';
 import {Button} from './ui/button';
 import {Heart} from 'lucide-react';
+import {useTranslation} from 'react-i18next';
 
 type LikesType = {
   item: MediaItemWithOwner | undefined;
@@ -25,6 +26,7 @@ const likeInitialState: LikeState = {
 };
 
 const Likes = ({item}: LikesType) => {
+  const {t} = useTranslation();
   const [likeState, likeDispatch] = useReducer(likeReducer, likeInitialState);
 
   const {postLike, deleteLike, getCountByMediaId, getUserLike} = useLike();
@@ -105,14 +107,13 @@ const Likes = ({item}: LikesType) => {
       <Button
         variant="ghost"
         onClick={handleLike}
-        title="Tykkää tästä mediasta"
-        aria-label="Tykkää tästä mediasta"
-        className="cursor-pointer"
+        className="cursor-pointer gap-[0.1rem]"
       >
         <Heart
           {...(likeState.userLike ? {fill: 'red', stroke: 'black'} : {})}
         />
         <span>{likeState.count}</span>
+        <span className="ml-[0.4rem]">{t('add like')}</span>
       </Button>
     </>
   );
